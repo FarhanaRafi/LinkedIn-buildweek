@@ -4,6 +4,8 @@
   margin-inline: auto;
   position: sticky;
   top: 0;
+  z-index: 1;
+  background-color: white;
 }
 
 .in-icon.linkedin-icon {
