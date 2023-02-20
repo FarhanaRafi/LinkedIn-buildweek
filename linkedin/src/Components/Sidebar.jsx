@@ -17,10 +17,10 @@ const Sidebar = () => {
   }
   return (
     <>
-      <Modal.Dialog>
+      <Modal.Dialog className="mt-5">
         <Modal.Body>
           <p>
-            Edit public profile & URL{" "}
+            Edit public profile & URL
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -34,7 +34,7 @@ const Sidebar = () => {
           </p>
           <hr />
           <p>
-            Add profile in another language{" "}
+            Add profile in another language
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -84,6 +84,7 @@ const Sidebar = () => {
         {profiles.slice(3, numberOfProfiles).map((profile) => {
           return (
             <Modal.Body>
+              <img src={profile.image} alt="avatar"/>
               <p>
                 {profile.name} {profile.surname}
               </p>
