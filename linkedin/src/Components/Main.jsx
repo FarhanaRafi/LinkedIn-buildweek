@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getMyProfileAsync } from "../Redux/Actions";
 import { Card, Button } from "react-bootstrap";
+import Detail from "./Detail";
 
 const Main = () => {
   const myData = useSelector((state) => state.profile.data);
@@ -55,6 +56,7 @@ const Main = () => {
           </Card.Text>
         </Card.Body>
       </Card>
+      <Detail />
     </>
   );
 };
