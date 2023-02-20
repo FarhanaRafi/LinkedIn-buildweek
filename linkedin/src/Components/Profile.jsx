@@ -5,6 +5,7 @@ import { Col, Row, Container } from "react-bootstrap";
 const Profile = () => {
   return (
     <>
+
       <Container>
         <Row>
           <Col xs={12} md={7}>
@@ -15,6 +16,7 @@ const Profile = () => {
           </Col>
         </Row>
       </Container>
+
     </>
   );
 };
