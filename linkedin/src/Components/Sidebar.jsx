@@ -18,7 +18,7 @@ const Sidebar = () => {
       <Modal.Dialog className="mt-5">
         <Modal.Body>
           <p>
-            Edit public profile & URL
+            <span className="mr-3">Edit public profile & URL</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -32,7 +32,7 @@ const Sidebar = () => {
           </p>
           <hr />
           <p>
-            Add profile in another language
+            <span className="mr-3">Add profile in another language</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -63,12 +63,17 @@ const Sidebar = () => {
         {profiles.slice(0, 3).map((profile) => {
           return (
             <Modal.Body>
-              <img className="sidebar-images" src={profile.image} alt="avatar" />
               <p>
+                <img
+                  className="sidebar-images mr-2"
+                  src={profile.image}
+                  alt="avatar"
+                />
                 {profile.name} {profile.surname}
               </p>
-              <p>{profile.title}</p>
-              <Button variant="secondary">Connect</Button>
+              <p className="mt-n3 ml-4">{profile.title}</p>
+              <Button variant="secondary mt-n3 ml-4">Connect</Button>
+              <hr className="mb-n3" />
             </Modal.Body>
           );
         })}
@@ -82,12 +87,19 @@ const Sidebar = () => {
         {profiles.slice(3, numberOfProfiles).map((profile) => {
           return (
             <Modal.Body>
-              <img className="sidebar-images" src={profile.image} alt="avatar"/>
               <p>
+                <img
+                  className="sidebar-images mr-2"
+                  src={profile.image}
+                  alt="avatar"
+                />
                 {profile.name} {profile.surname}
               </p>
-              <p>{profile.title}</p>
-              <Button variant="secondary">Connect</Button>
+              <p className="mt-n3 ml-4">{profile.title}</p>
+              <Button variant="secondary" className="mt-n3 ml-4">
+                Connect
+              </Button>
+              <hr className="mb-n3 " />
             </Modal.Body>
           );
         })}
@@ -102,16 +114,20 @@ const Sidebar = () => {
           <Modal.Title>LinkedIn Learning</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>Add new skills with these courses, free for 24 hours</p>
+          <p>
+            <strong>
+              Add new skills with these courses, free for 24 hours
+            </strong>
+          </p>
         </Modal.Body>
         <Modal.Body>
-          <p>Recommendation</p>
+          <p className="mt-n5">Recommendation</p>
         </Modal.Body>
         <Modal.Body>
-          <p>Recommendation</p>
+          <p className="mt-n5">Recommendation</p>
         </Modal.Body>
         <Modal.Body>
-          <p>Recommendation</p>
+          <p className="mt-n5">Recommendation</p>
         </Modal.Body>
         <Button variant="secondary">See my recommendations</Button>
       </Modal.Dialog>
