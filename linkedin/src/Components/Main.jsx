@@ -1,8 +1,9 @@
-
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getMyProfileAsync } from "../Redux/Actions";
 import { Card, Button } from "react-bootstrap";
+import Detail from "./Detail";
+import Resource from "./Resource";
 
 const Main = () => {
   const myData = useSelector((state) => state.profile.data);
@@ -27,7 +28,7 @@ const Main = () => {
           className="ml-3 mt-n5"
           style={{ borderRadius: "50%", height: "90px", width: "90px" }}
         />
-        <Card.Body style={{ height: "40vh" }}>
+        <Card.Body style={{ height: "35vh" }}>
           <Card.Text>
             <h5>
               <strong>
@@ -43,14 +44,21 @@ const Main = () => {
                 <strong>Contact info</strong>
               </span>
             </p>
-            <p lassName="text-primary">100 connections</p>
+            <p className="text-primary mt-n2">
+              <strong>100 connections</strong>
+            </p>
             <Button variant="primary rounded-pill">Open to</Button>
             <Button variant="outline-primary rounded-pill" className="ml-2">
               Add profile section
             </Button>
+            <Button variant="outline-secondary rounded-pill" className="ml-2">
+              More
+            </Button>
           </Card.Text>
         </Card.Body>
       </Card>
+      <Detail />
+      <Resource />
     </>
   );
 };
