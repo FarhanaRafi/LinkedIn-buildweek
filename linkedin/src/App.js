@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NavBar from "./Components/NavBar";
 import Profile from "./Components/Profile";
 import "./styles/navBar.css";
+import Footer from "./Components/Footer";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Profile />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
