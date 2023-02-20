@@ -7,7 +7,7 @@ const Profile = () => {
     <>
       <Container>
         <Row>
-          <Col xs={12} md={8}>
+          <Col xs={12} md={7}>
             <Main />
           </Col>
           <Col xs={12} md={3}>
