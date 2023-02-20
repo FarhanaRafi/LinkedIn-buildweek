@@ -4,6 +4,7 @@ import { getMyProfileAsync } from "../Redux/Actions";
 import { Card, Button } from "react-bootstrap";
 import Detail from "./Detail";
 import Resource from "./Resource";
+import Education from "./Education";
 
 const Main = () => {
   const myData = useSelector((state) => state.profile.data);
@@ -28,7 +29,7 @@ const Main = () => {
           className="ml-3 mt-n5"
           style={{ borderRadius: "50%", height: "90px", width: "90px" }}
         />
-        <Card.Body style={{ height: "35vh" }}>
+        <Card.Body style={{ height: "39vh" }}>
           <Card.Text>
             <h5>
               <strong>
@@ -59,6 +60,7 @@ const Main = () => {
       </Card>
       <Detail />
       <Resource />
+      <Education />
     </>
   );
 };
