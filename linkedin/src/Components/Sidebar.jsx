@@ -63,7 +63,7 @@ const Sidebar = () => {
         {profiles.slice(0, 3).map((profile) => {
           return (
             <Modal.Body>
-              <img src={profile.image} alt="avatar" />
+              <img className="sidebar-images" src={profile.image} alt="avatar" />
               <p>
                 {profile.name} {profile.surname}
               </p>
@@ -82,7 +82,7 @@ const Sidebar = () => {
         {profiles.slice(3, numberOfProfiles).map((profile) => {
           return (
             <Modal.Body>
-              <img src={profile.image} alt="avatar"/>
+              <img className="sidebar-images" src={profile.image} alt="avatar"/>
               <p>
                 {profile.name} {profile.surname}
               </p>
