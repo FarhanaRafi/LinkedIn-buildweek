@@ -1,20 +1,18 @@
-
 import { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import '../styles/Sidebar.css'
+import "../styles/Sidebar.css";
 
 const Sidebar = () => {
   const profiles = useSelector((state) => state.profiles.profiles);
-  const [numberOfProfiles, setNumberOfProfiles] = useState(8)
+  const [numberOfProfiles, setNumberOfProfiles] = useState(8);
   const showMoreProfiles = () => {
-    if(numberOfProfiles === 8){
-      setNumberOfProfiles(numberOfProfiles + 5)
+    if (numberOfProfiles === 8) {
+      setNumberOfProfiles(numberOfProfiles + 5);
     } else {
-      setNumberOfProfiles(numberOfProfiles - 5)
+      setNumberOfProfiles(numberOfProfiles - 5);
     }
-      
-  }
+  };
   return (
     <>
       <Modal.Dialog>
@@ -65,7 +63,7 @@ const Sidebar = () => {
         {profiles.slice(0, 3).map((profile) => {
           return (
             <Modal.Body>
-              <img src={profile.image} alt="avatar"/>
+              <img src={profile.image} alt="avatar" />
               <p>
                 {profile.name} {profile.surname}
               </p>
@@ -93,7 +91,9 @@ const Sidebar = () => {
           );
         })}
 
-        <Button variant="secondary" onClick={showMoreProfiles}>Show {numberOfProfiles === 8 ? 'more' : 'less'}</Button>
+        <Button variant="secondary" onClick={showMoreProfiles}>
+          Show {numberOfProfiles === 8 ? "more" : "less"}
+        </Button>
       </Modal.Dialog>
 
       <Modal.Dialog>
@@ -123,4 +123,3 @@ export default Sidebar;
 /* 
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzMmI1ZDgzODFmYzAwMTNmZmZhYzkiLCJpYXQiOjE2NzY4ODIyOTcsImV4cCI6MTY3ODA5MTg5N30.tXTRKsrzYRhp7tnq3X624lNXoM5ANXqqLAIEIxKpuFU
 */
-

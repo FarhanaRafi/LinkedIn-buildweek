@@ -6,23 +6,21 @@ import { useDispatch } from "react-redux";
 import { getProfilesAsync } from "../Redux/Actions";
 
 const Profile = () => {
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getProfilesAsync())
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    dispatch(getProfilesAsync());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
 
   return (
     <>
       <Container>
         <Row>
-          <Col xs={12} md={10}>
+          <Col xs={12} md={9}>
             <Main />
           </Col>
-          <Col xs={12} md={2}>
+          <Col xs={12} md={3}>
             <Sidebar />
           </Col>
         </Row>
