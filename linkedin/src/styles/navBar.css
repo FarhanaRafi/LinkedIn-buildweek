@@ -1,11 +1,16 @@
+.nav-bar-container-container {
+  width: 100%;
+
+  background-color: white;
+}
+
 .nav-bar-container {
   display: flex;
   max-width: 70rem;
-  margin-inline: auto;
   position: sticky;
   top: 0;
   z-index: 1;
-  background-color: white;
+  margin-inline: auto;
 }
 
 .in-icon.linkedin-icon {
