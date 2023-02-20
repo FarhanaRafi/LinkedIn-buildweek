@@ -48,6 +48,9 @@ const Main = () => {
             <Button variant="outline-primary rounded-pill" className="ml-2">
               Add profile section
             </Button>
+            <Button variant="outline-secondary rounded-pill" className="ml-2">
+              More
+            </Button>
           </Card.Text>
         </Card.Body>
       </Card>
