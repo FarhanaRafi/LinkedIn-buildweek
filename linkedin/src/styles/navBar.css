@@ -1,0 +1,67 @@
+.nav-bar-container {
+  display: flex;
+  max-width: 70rem;
+  margin-inline: auto;
+  border-bottom: 1px solid gray;
+}
+
+.in-icon.linkedin-icon {
+  font-size: 2.2rem;
+  color: rgb(10, 102, 194);
+  margin-right: -1rem;
+  margin-top: 10px;
+}
+
+.search-bar-container {
+  width: 18rem;
+  display: flex;
+  align-items: center;
+  background-color: #eef3f8;
+  border-radius: 10px;
+
+  margin-top: 10px;
+}
+
+.search-bar-container svg {
+  height: 1.5rem;
+  margin-left: 1.2rem;
+}
+
+.search-bar {
+  font-size: 1rem;
+  border: none;
+  background-color: #eef3f8;
+}
+
+.icon-link-section {
+  display: flex;
+  margin-left: auto;
+  border-right: 1px solid lightgray;
+  padding-top: 10px;
+}
+
+.nav-bar-container a {
+  color: rgb(113, 113, 113);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.8rem;
+  margin-right: 1.5rem;
+}
+
+.nav-bar-container svg {
+  font-size: 1.5rem;
+}
+
+.right-nav-section {
+  display: flex;
+  margin-left: 2rem;
+  padding-top: 10px;
+}
+
+.right-nav-section .premium-link {
+  width: 6rem;
+  text-align: center;
+  text-decoration: underline;
+  color: #5d3b09;
+}
