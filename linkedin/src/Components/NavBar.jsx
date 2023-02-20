@@ -15,13 +15,6 @@ const NavBar = () => {
   const [searchWord, setSearchWord] = useState("");
   const profilesList = useSelector((state) => state.profiles.profiles);
 
-  const checkingName = () => {
-    profilesList.filter(
-      (name) =>
-        name.name.includes(searchWord) || name.surname.includes(searchWord)
-    );
-    console.log(profilesList);
-  };
   return (
     <div className="nav-bar-container-container">
       <div className="nav-bar-container">
@@ -37,8 +30,7 @@ const NavBar = () => {
               aria-label="search"
               aria-describedby="basic-addon2"
               onChange={(e) => {
-                setSearchWord(e.target.value);
-                checkingName(e.target.value);
+                setSearchWord(e.target.value.toLowerCase());
               }}
             />
           </InputGroup>
@@ -46,12 +38,15 @@ const NavBar = () => {
             {searchWord !== "" &&
               profilesList.map((person, index) => {
                 return (
-                  <div
-                    key={index}
-                    className="cursor-pointer hover:bg-black hover:bg-opacity-10 p-2"
-                  >
-                    {person.name}, {person.surname}
-                  </div>
+                  (person.name.toLowerCase().includes(searchWord) ||
+                    person.surname.toLowerCase().includes(searchWord)) && (
+                    <div
+                      key={index}
+                      className="cursor-pointer hover:bg-black hover:bg-opacity-10 p-2"
+                    >
+                      {person.name}, {person.surname}
+                    </div>
+                  )
                 );
               })}
           </div>
