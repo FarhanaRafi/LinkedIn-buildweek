@@ -2,6 +2,8 @@
   display: flex;
   max-width: 70rem;
   margin-inline: auto;
+  position: sticky;
+  top: 0;
 }
 
 .in-icon.linkedin-icon {
