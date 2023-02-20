@@ -14,14 +14,15 @@ const Profile = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+
   return (
     <>
       <Container>
         <Row>
-          <Col xs={12} md={7}>
+          <Col xs={12} md={10}>
             <Main />
           </Col>
-          <Col xs={12} md={3}>
+          <Col xs={12} md={2}>
             <Sidebar />
           </Col>
         </Row>

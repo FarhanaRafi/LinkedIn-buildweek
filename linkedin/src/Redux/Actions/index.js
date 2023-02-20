@@ -1,11 +1,20 @@
 export const GET_MY_OWN_PROFILE = "GET_MY_OWN_PROFILE";
 export const GET_PROFILES = "GET_PROFILES"
+const options = {
+  method: "GET",
+  headers: {
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzNDZlNDgzODFmYzAwMTNmZmZhZDkiLCJpYXQiOjE2NzY4ODg0NzAsImV4cCI6MTY3ODA5ODA3MH0.AYIsvNXcD-Xnx3yf_2zgpkcNNyuB19GZwp9jMm6Y6Jc",
+  },
+};
+
 
 export const getMyProfileAsync = () => {
   return async (dispatch, getState) => {
     try {
       let res = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/me"
+        "https://striveschool-api.herokuapp.com/api/profile/me",
+        options
       );
 
       if (res.ok) {
@@ -23,7 +32,6 @@ export const getMyProfileAsync = () => {
     }
   };
 };
-
 
 
 export const getProfilesAsync = () => {
@@ -55,3 +63,4 @@ export const getProfilesAsync = () => {
     }
   };
 };
+

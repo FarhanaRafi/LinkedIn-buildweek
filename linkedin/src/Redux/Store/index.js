@@ -6,12 +6,13 @@ import localStorage from "redux-persist/lib/storage";
 import myProfileReducer from "../Reducers/myProfileReducer";
 import profilesReducer from "../Reducers/profilesReducer";
 
+
 const persistConfig = {
   key: "root",
   storage: localStorage,
   transform: [
     encryptTransform({
-      secretKey: "process.env.REACT_APP_PASSWORD,"
+      secretKey: "process.env.REACT_APP_PASSWORD",
     }),
   ],
 };
