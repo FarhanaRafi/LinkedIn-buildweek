@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { getExperiencesAsync } from "../Redux/Actions";
 import EditExperienceModal from "./EditExperienceModal";
+import { format } from "date-fns";
 
 const ExperiencePage = () => {
   const profiles = useSelector((state) => state.profiles.profiles);
@@ -20,6 +21,7 @@ const ExperiencePage = () => {
   const id = useSelector((state) => state.profile.data);
   const [editModal, setEditModal] = useState(false);
   const [experience, setExperience] = useState(null);
+  const [selectedExpId, setSelectedExpId] = useState(null);
 
   const experienceFromRedux = useSelector(
     (state) => state.experience.experiences
@@ -33,6 +35,19 @@ const ExperiencePage = () => {
   return (
     <>
       <Container>
+        <Modal
+          show={editModal}
+          onHide={handleClose}
+          backdrop="static"
+          keyboard={false}
+        >
+          <EditExperienceModal
+            expId={selectedExpId}
+            exp={experience}
+            handleClose={handleClose}
+          />
+        </Modal>
+
         <Row>
           <Col xs={12} md={8} className="mt-3">
             <Card className="mt-3 mb-5">
@@ -66,24 +81,22 @@ const ExperiencePage = () => {
                             <strong>{exp.role}</strong>
 
                             <div className="ml-auto">
-                              <FiEdit2 onClick={handleShow} />
-                              <Modal
-                                show={show}
-                                onHide={handleClose}
-                                backdrop="static"
-                                keyboard={false}
-                              >
-                                <EditExperienceModal
-                                  expId={exp._id}
-                                  handleClose={handleClose}
-                                />
-                              </Modal>
+                              <FiEdit2
+                                onClick={() => {
+                                  setSelectedExpId(exp._id);
+                                  setExperience(exp);
+                                  setEditModal(true);
+                                }}
+                              />
                             </div>
                           </div>
                           <div className="ml-4 mt-n2">
                             {exp.company}, {exp.area}
                             <br />
-                            {exp.startDate} -{exp.endDate}
+                            {format(
+                              new Date(exp.startDate),
+                              "LLL, yyyy"
+                            )} - {format(new Date(exp.endDate), "LLL, yyyy")}
                             <br />
                             {exp.description}{" "}
                           </div>

@@ -11,10 +11,9 @@ const experienceReducer = (state = initialState, action) => {
         ...state,
         experiences: action.payload,
       };
-      case PUT_EXPERIENCE:
+    case PUT_EXPERIENCE:
       return {
         ...state,
-        experiences: action.payload,
       };
     default:
       return state;

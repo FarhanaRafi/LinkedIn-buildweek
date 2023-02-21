@@ -3,23 +3,13 @@ import { Button, Form, Modal } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { putExperiencesAsync } from "../Redux/Actions";
 
-
 const EditExperienceModal = (props) => {
   const experienceId = props.expId;
   const userId = useSelector((state) => state.profile.data._id);
   // const updateExperience = useSelector((state) => state.experience.experiences);
   const dispatch = useDispatch();
 
-
-  const [experienceObj, setExperienceObj] = useState({
-    role: "",
-    company: "",
-    startDate: "",
-    endDate: "",
-    description: "",
-    area: "",
-    username: "",
-  });
+  const [experienceObj, setExperienceObj] = useState(props.exp);
   console.log(experienceObj, "experience Obj");
 
   return (
@@ -34,7 +24,6 @@ const EditExperienceModal = (props) => {
           <Form
             onSubmit={(e) => {
               e.preventDefault();
-
             }}
           >
             <Form.Group className="mb-3 text-muted" controlId="title">
@@ -177,9 +166,8 @@ const EditExperienceModal = (props) => {
                   );
                   dispatch(
                     putExperiencesAsync(userId, experienceId, experienceObj)
-
                   );
-                  props.handleClose()
+                  props.handleClose();
                 }}
               >
                 Save
