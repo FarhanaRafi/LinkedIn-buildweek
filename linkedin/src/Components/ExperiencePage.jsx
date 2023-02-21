@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getExperiencesAsync } from "../Redux/Actions";
+import EditExperienceModal from "./EditExperienceModal";
 
 const ExperiencePage = () => {
   const profiles = useSelector((state) => state.profiles.profiles);
@@ -14,9 +15,11 @@ const ExperiencePage = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const id = useSelector((state) => state.profile.data);
+  console.log(id._id, "id");
   const experienceFromRedux = useSelector(
     (state) => state.experience.experiences
   );
+  console.log(experienceFromRedux._id, "exp id");
   console.log(experienceFromRedux, "exp");
   const dispatch = useDispatch();
 
@@ -55,7 +58,15 @@ const ExperiencePage = () => {
                             {"  "}
                             <strong>{exp.role}</strong>
                             <span className="ml-auto">
-                              <FiEdit2 />
+                              <FiEdit2 onClick={handleShow} />
+                              <Modal
+                                show={show}
+                                onHide={handleClose}
+                                backdrop="static"
+                                keyboard={false}
+                              >
+                                <EditExperienceModal expId={id._id} />
+                              </Modal>
                             </span>
                           </div>
                           <div className="ml-4 mt-n2">
