@@ -36,7 +36,7 @@ const ExperiencePage = () => {
                         />
                         {"  "}
                         <h6>EPICODE Global</h6>
-                        <span className=" mr-auto">
+                        <span className="ml-auto">
                           <FiEdit2 />
                         </span>
                       </div>
@@ -65,7 +65,7 @@ const ExperiencePage = () => {
                     </span>
                   </div>
                   <hr />
-                  <h6>
+                  <div className="d-flex">
                     <img
                       src="https://images.cdn1.stockunlimited.net/preview1300/university-logo-design_1970415.jpg"
                       alt="logo"
@@ -73,7 +73,10 @@ const ExperiencePage = () => {
                     />
                     {"  "}
                     <strong>UNIVERSITY</strong>
-                  </h6>
+                    <span className="ml-auto">
+                      <FiEdit2 />
+                    </span>
+                  </div>
                   <p className="ml-4 mt-n2">
                     Master of Science -
                     <br />

@@ -1,5 +1,7 @@
 export const GET_MY_OWN_PROFILE = "GET_MY_OWN_PROFILE";
-export const GET_PROFILES = "GET_PROFILES"
+export const GET_PROFILES = "GET_PROFILES";
+export const GET_EXPERIENCES = "GET_EXPERIENCES";
+
 const options = {
   method: "GET",
   headers: {
@@ -7,7 +9,6 @@ const options = {
       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzNDZlNDgzODFmYzAwMTNmZmZhZDkiLCJpYXQiOjE2NzY4ODg0NzAsImV4cCI6MTY3ODA5ODA3MH0.AYIsvNXcD-Xnx3yf_2zgpkcNNyuB19GZwp9jMm6Y6Jc",
   },
 };
-
 
 export const getMyProfileAsync = () => {
   return async (dispatch, getState) => {
@@ -33,18 +34,16 @@ export const getMyProfileAsync = () => {
   };
 };
 
-
 export const getProfilesAsync = () => {
   return async (dispatch, getState) => {
     try {
       let res = await fetch(
         "https://striveschool-api.herokuapp.com/api/profile/",
         {
-
           headers: {
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzMmI1ZDgzODFmYzAwMTNmZmZhYzkiLCJpYXQiOjE2NzY4ODIyOTcsImV4cCI6MTY3ODA5MTg5N30.tXTRKsrzYRhp7tnq3X624lNXoM5ANXqqLAIEIxKpuFU'
-          }
-
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzMmI1ZDgzODFmYzAwMTNmZmZhYzkiLCJpYXQiOjE2NzY4ODIyOTcsImV4cCI6MTY3ODA5MTg5N30.tXTRKsrzYRhp7tnq3X624lNXoM5ANXqqLAIEIxKpuFU",
+          },
         }
       );
 
@@ -64,3 +63,31 @@ export const getProfilesAsync = () => {
   };
 };
 
+export const getExperiencesAsync = (userId) => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await fetch(
+        `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences`,
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzMmI1ZDgzODFmYzAwMTNmZmZhYzkiLCJpYXQiOjE2NzY4ODIyOTcsImV4cCI6MTY3ODA5MTg5N30.tXTRKsrzYRhp7tnq3X624lNXoM5ANXqqLAIEIxKpuFU",
+          },
+        }
+      );
+
+      if (res.ok) {
+        let fetchedExperiences = await res.json();
+        console.log(fetchedExperiences);
+        dispatch({
+          type: GET_EXPERIENCES,
+          payload: fetchedExperiences,
+        });
+      } else {
+        console.log("error");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
