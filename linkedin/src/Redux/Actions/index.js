@@ -3,6 +3,7 @@ export const GET_PROFILES = "GET_PROFILES";
 export const GET_EXPERIENCES = "GET_EXPERIENCES";
 export const ADD_EXPERIENCE = "ADD_EXPERIENCE";
 export const PUT_EXPERIENCE = "PUT_EXPERIENCE";
+export const DELETE_EXPERIENCE = "DELETE_EXPERIENCE";
 
 const getOptions = (method) => {
   return {
@@ -63,7 +64,6 @@ export const getProfilesAsync = () => {
 };
 
 export const getExperiencesAsync = (userId) => {
-  console.log(userId, "userid");
   return async (dispatch, getState) => {
     try {
       let res = await fetch(
@@ -164,7 +164,6 @@ export const putExperiencesAsync = (userId, expId, experience) => {
       );
       if (res.ok) {
         let fetchedPutExperience = await res.json();
-        console.log(fetchedPutExperience);
         dispatch({
           type: PUT_EXPERIENCE,
           payload: fetchedPutExperience,
@@ -175,6 +174,27 @@ export const putExperiencesAsync = (userId, expId, experience) => {
       }
     } catch (error) {
       console.log(error);
+    }
+  };
+};
+
+export const deleteExperienceAsync = (userId, expId) => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await fetch(
+        `https:striveschool-api.herokuapp.com/api/profile/${userId}/experiences/${expId}`,
+        { ...getOptions("DELETE") }
+      );
+
+      if (res.ok) {
+        dispatch({
+          type: DELETE_EXPERIENCE,
+        });
+      } else {
+        console.log("error");
+      }
+    } catch (err) {
+      console.log(err);
     }
   };
 };

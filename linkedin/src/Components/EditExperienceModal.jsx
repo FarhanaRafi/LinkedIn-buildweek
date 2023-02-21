@@ -1,17 +1,23 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { putExperiencesAsync } from "../Redux/Actions";
+import {
+  putExperiencesAsync,
+  deleteExperienceAsync,
+  getExperiencesAsync,
+} from "../Redux/Actions";
 
 const EditExperienceModal = (props) => {
   const experienceId = props.expId;
   const userId = useSelector((state) => state.profile.data._id);
   // const updateExperience = useSelector((state) => state.experience.experiences);
   const dispatch = useDispatch();
-
   const [experienceObj, setExperienceObj] = useState(props.exp);
-  console.log(experienceObj, "experience Obj");
 
+  useEffect(() => {
+    dispatch(getExperiencesAsync(userId));
+  }, []);
   return (
     <>
       <Modal.Header closeButton>
@@ -157,7 +163,15 @@ const EditExperienceModal = (props) => {
             </Form.Group>
 
             <div className="d-flex justify-content-between">
-              <Button variant="danger">Delete</Button>
+              <Button
+                variant="danger"
+                onClick={() => {
+                  dispatch(deleteExperienceAsync(userId, experienceId));
+                  props.handleClose();
+                }}
+              >
+                Delete
+              </Button>
               <Button
                 variant="primary"
                 onClick={() => {
