@@ -52,7 +52,7 @@ const Sidebar = () => {
           <p>Get the latest jobs and industry news</p>
         </Modal.Body>
 
-        <Button>Follow</Button>
+        <Button variant="outline-secondary rounded-pill" className="mt-n3 ml-4 sidebar-button">Follow</Button>
       </Modal.Dialog>
 
       <Modal.Dialog>

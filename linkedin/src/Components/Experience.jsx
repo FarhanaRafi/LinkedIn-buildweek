@@ -44,7 +44,7 @@ const Experience = () => {
                   backdrop="static"
                   keyboard={false}
                 >
-                  <ExperienceModal />
+                  <ExperienceModal handleClose={handleClose} />
                 </Modal>
 
                 <Link to="/experience-page" className="ml-3 ">

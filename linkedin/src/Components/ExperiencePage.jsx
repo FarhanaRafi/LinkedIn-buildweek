@@ -1,32 +1,35 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Card, Container, Row, Col, Modal, Button } from "react-bootstrap";
 import { BsPlusLg } from "react-icons/bs";
 import { FiEdit2 } from "react-icons/fi";
 import ExperienceModal from "./ExperienceModal";
-import { useSelector } from "react-redux";
-import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
 import { getExperiencesAsync } from "../Redux/Actions";
 import EditExperienceModal from "./EditExperienceModal";
 
 const ExperiencePage = () => {
   const profiles = useSelector((state) => state.profiles.profiles);
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    setEditModal(false)
+  };
   const handleShow = () => setShow(true);
+  const dispatch = useDispatch();
   const id = useSelector((state) => state.profile.data);
-  console.log(id._id, "id");
+  const [editModal, setEditModal] = useState(false);
+  const [experience, setExperience] = useState(null)
+
   const experienceFromRedux = useSelector(
     (state) => state.experience.experiences
   );
-  console.log(experienceFromRedux._id, "exp id");
-  console.log(experienceFromRedux, "exp");
-  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getExperiencesAsync(id._id));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   return (
     <>
       <Container>
@@ -45,7 +48,7 @@ const ExperiencePage = () => {
                         backdrop="static"
                         keyboard={false}
                       >
-                        <ExperienceModal />
+                        <ExperienceModal edit={editModal} handleClose={handleClose} experience={experience}/>
                       </Modal>
                     </span>
                   </div>
@@ -53,11 +56,16 @@ const ExperiencePage = () => {
                   {experienceFromRedux.map((exp) => {
                     return (
                       <div>
+
+                      
                         <span>
-                          <div className="ml-4 h6 d-flex">
+                          <div className="ml-4 d-flex">
                             {"  "}
                             <strong>{exp.role}</strong>
-                            <span className="ml-auto">
+                        
+                      
+                          <div className="ml-auto">
+
                               <FiEdit2 onClick={handleShow} />
                               <Modal
                                 show={show}
@@ -65,9 +73,9 @@ const ExperiencePage = () => {
                                 backdrop="static"
                                 keyboard={false}
                               >
-                                <EditExperienceModal expId={id._id} />
+                                <EditExperienceModal expId={exp._id} />
                               </Modal>
-                            </span>
+                          </div>
                           </div>
                           <div className="ml-4 mt-n2">
                             {exp.company}, {exp.area}
@@ -78,6 +86,7 @@ const ExperiencePage = () => {
                           </div>
                         </span>
                         <hr />
+
                       </div>
                     );
                   })}
