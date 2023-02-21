@@ -65,6 +65,9 @@ const Sidebar = () => {
             <Modal.Body>
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
               <img className="sidebar-images" src={profile.image} alt="avatar" />
               <p>
                 {profile.name} {profile.surname}
