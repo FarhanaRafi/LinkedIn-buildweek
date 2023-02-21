@@ -63,17 +63,6 @@ const Sidebar = () => {
         {profiles.slice(0, 3).map((profile) => {
           return (
             <Modal.Body>
-              <img className="sidebar-images" src={profile.image} alt="avatar" />
-              <p>
-                <img
-                  className="sidebar-images mr-2"
-                  src={profile.image}
-                  alt="avatar"
-                />
-                {profile.name} {profile.surname}
-              </p>
-              <p>{profile.title}</p>
-              <Button variant="secondary">Connect</Button>
               <p className="sidebar-name">
                 <img
                   className="sidebar-images mr-2"
@@ -104,17 +93,6 @@ const Sidebar = () => {
         {profiles.slice(3, numberOfProfiles).map((profile) => {
           return (
             <Modal.Body>
-              <img className="sidebar-images" src={profile.image} alt="avatar"/>
-              <p>
-                <img
-                  className="sidebar-images mr-2"
-                  src={profile.image}
-                  alt="avatar"
-                />
-                {profile.name} {profile.surname}
-              </p>
-              <p>{profile.title}</p>
-              <Button variant="secondary">Connect</Button>
               <p className="sidebar-name">
                 <img
                   className="sidebar-images mr-2"
@@ -136,6 +114,7 @@ const Sidebar = () => {
                 Connect
               </Button>
               <hr className="mb-n3 " />
+
             </Modal.Body>
           );
         })}
