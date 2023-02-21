@@ -4,9 +4,13 @@ import { BsPlusLg } from "react-icons/bs";
 import { FiEdit2 } from "react-icons/fi";
 import ExperienceModal from "./ExperienceModal";
 import { useSelector } from "react-redux";
+import { useState } from "react";
 
 const ExperiencePage = () => {
   const profiles = useSelector((state) => state.profiles.profiles);
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   return (
     <>
       <Container>
@@ -18,11 +22,15 @@ const ExperiencePage = () => {
                   <div className="mb-3 d-flex  mr-auto">
                     <h5>Experience</h5>
                     <span className="ml-auto">
-                      <BsPlusLg
-                        onClick={() => {
-                          <ExperienceModal />;
-                        }}
-                      />
+                      <BsPlusLg onClick={handleShow} />
+                      <Modal
+                        show={show}
+                        onHide={handleClose}
+                        backdrop="static"
+                        keyboard={false}
+                      >
+                        <ExperienceModal />
+                      </Modal>
                     </span>
                   </div>
 
@@ -37,7 +45,7 @@ const ExperiencePage = () => {
                         {"  "}
                         <h6>EPICODE Global</h6>
                         <span className="ml-auto">
-                          <FiEdit2 />
+                          <FiEdit2 onClick={handleShow} />
                         </span>
                       </div>
 
