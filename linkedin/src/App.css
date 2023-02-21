@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+/* Modal */
+.modal-open .modal .modal-dialog {
+  margin-inline: auto;
+  max-width: 47rem;
+}
+
+.modal-dialog .modal-content {
+  width: 100%;
+  max-height: 90vh;
+  overflow: auto;
+}

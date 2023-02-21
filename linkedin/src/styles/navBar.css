@@ -1,0 +1,128 @@
+.nav-bar-container-container {
+  width: 100%;
+
+  background-color: white;
+}
+
+.nav-bar-container {
+  display: flex;
+  max-width: 70rem;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  margin-inline: auto;
+}
+
+.in-icon.linkedin-icon {
+  font-size: 2.2rem;
+  color: rgb(10, 102, 194);
+  margin-right: 0.5rem;
+  margin-top: 10px;
+}
+
+.search-bar-container {
+  width: 18rem;
+  display: flex;
+  align-items: center;
+  background-color: #eef3f8;
+  border-radius: 10px;
+
+  margin-top: 10px;
+}
+
+.search-bar-container svg {
+  height: 1.5rem;
+  margin-left: 1.2rem;
+}
+
+.search-bar {
+  font-size: 1rem;
+  border: none;
+  background-color: #eef3f8;
+}
+
+.icon-link-section {
+  display: flex;
+  margin-left: auto;
+  border-right: 1px solid lightgray;
+  padding-top: 10px;
+}
+
+.nav-bar-container .links {
+  color: rgb(113, 113, 113);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.8rem;
+  margin-right: 1.5rem;
+}
+
+.nav-bar-container .links:hover {
+  color: black;
+}
+
+.nav-bar-container svg {
+  font-size: 1.5rem;
+  margin-bottom: 0.3rem;
+}
+
+.profile-picture {
+  height: 1.7rem;
+  border-radius: 50%;
+}
+
+.dropdown button.links {
+  background-color: white;
+  padding-top: 0;
+  border: none;
+  box-shadow: none;
+}
+
+.dropdown-menu {
+  width: 20rem;
+  font-size: 0.9rem;
+}
+
+.dropdown-menu h5 {
+  margin-left: 1.5rem;
+}
+
+.dropdown-top {
+  display: flex;
+  font-size: 0.9rem;
+  margin-left: 10px;
+}
+
+.dropdown-top span {
+  font-weight: bold;
+}
+
+.dropdown-profile-picture {
+  height: 3.5rem;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.view-profile-button {
+  color: rgb(10, 102, 194);
+  width: 90%;
+  border: 1px solid rgb(10, 102, 194);
+  margin-inline: auto;
+  text-align: center;
+  border-radius: 50px;
+  margin-top: 0.5rem;
+  font-weight: bold;
+}
+
+.right-nav-section {
+  display: flex;
+  margin-left: 2rem;
+  padding-top: 10px;
+}
+
+.right-nav-section .premium-link {
+  width: 6rem;
+  text-align: center;
+  text-decoration: underline;
+  color: #5d3b09;
+}
