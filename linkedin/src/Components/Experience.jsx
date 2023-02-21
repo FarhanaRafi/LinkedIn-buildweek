@@ -1,5 +1,9 @@
 import React from "react";
 import { Card } from "react-bootstrap";
+import { BsPlusLg } from "react-icons/bs";
+import { FiEdit2 } from "react-icons/fi";
+import ExperienceModal from "./ExperienceModal";
+import { Link } from "react-router-dom";
 
 const Experience = () => {
   return (
@@ -8,10 +12,22 @@ const Experience = () => {
         <Card className="mt-3">
           <Card.Body style={{ height: "73vh" }}>
             <Card.Text>
-              <h5 className="mb-3">
-                <strong>Experience</strong>
-              </h5>
-              <p>
+              <div className="mb-3 d-flex  mr-auto">
+                <h5>Experience</h5>
+                <span className="ml-auto">
+                  <BsPlusLg
+                    onClick={() => {
+                      <ExperienceModal />;
+                    }}
+                  />
+                </span>
+
+                <Link to="/experience-page" className="ml-3 ">
+                  <FiEdit2 />
+                </Link>
+              </div>
+
+              <div>
                 <span>
                   <h6>
                     <img
@@ -22,7 +38,7 @@ const Experience = () => {
                     {"  "}
                     <strong>EPICODE Global</strong>
                   </h6>
-                  <p className="ml-4 mt-n2">
+                  <div className="ml-4 mt-n2">
                     Web Development Bootcamp
                     <br />
                     Nov 2022
@@ -39,9 +55,9 @@ const Experience = () => {
                       Web Services API · AJAX · Bootstrap · Redux.js · React.js
                       · JavaScript · Presentation Skills · Teamwork
                     </p>
-                  </p>
+                  </div>
                 </span>
-              </p>
+              </div>
               <hr />
               <h6>
                 <img
