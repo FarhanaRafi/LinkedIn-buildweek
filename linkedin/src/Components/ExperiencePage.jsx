@@ -73,7 +73,7 @@ const ExperiencePage = () => {
                                 backdrop="static"
                                 keyboard={false}
                               >
-                                <EditExperienceModal expId={exp._id} />
+                                <EditExperienceModal expId={exp._id} handleClose={handleClose} />
                               </Modal>
                           </div>
                           </div>
