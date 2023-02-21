@@ -56,7 +56,8 @@ const ExperiencePage = () => {
                   {experienceFromRedux.map((exp) => {
                     return (
                       <div>
-                       
+
+                      
                         <span>
                           <div className="ml-4 d-flex">
                             {"  "}
@@ -64,6 +65,7 @@ const ExperiencePage = () => {
                         
                       
                           <div className="ml-auto">
+
                               <FiEdit2 onClick={handleShow} />
                               <Modal
                                 show={show}
