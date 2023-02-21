@@ -1,30 +1,43 @@
 import React, { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { addExperienceAsync, editExperienceAsync } from "../Redux/Actions";
 
-const ExperienceModal = () => {
+const ExperienceModal = ({ handleClose, edit, experience }) => {
   const [experienceObj, setExperienceObj] = useState({
-    role: "",
-    company: "",
+    role: edit ? experience?.role : "",
+    company: edit ? experience?.company : "",
     startDate: "",
     endDate: "",
+    area: edit ? experience?.area: "",
   });
+
+  const dispatch = useDispatch();
+  const profile = useSelector((state) => state.profile.data);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    /*if (edit) {
+      dispatch(editExperienceAsync(profile._id, experienceObj, handleClose));
+    } else {
+      dispatch(addExperienceAsync(profile._id, experienceObj, handleClose));
+    }*/
+  };
+
   return (
     <>
       <Modal.Header closeButton>
-        <Modal.Title>Add experience</Modal.Title>
+        <Modal.Title>{edit ? "Edit" : "Add"} experience</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <div className="notify-section"></div>
         <div className="form">
           <p>* Indicates required</p>
-          <Form
-            onSubmit={(e) => {
-              e.preventDefault();
-            }}
-          >
+          <Form onSubmit={submitHandler}>
             <Form.Group className="mb-3 text-muted" controlId="title">
               <Form.Label>Title*</Form.Label>
               <Form.Control
+                value={experienceObj.role}
                 type="text"
                 placeholder="Ex: Retail Sales Manager"
                 onChange={(e) =>
@@ -48,6 +61,7 @@ const ExperienceModal = () => {
             <Form.Group className="mb-3 text-muted" controlId="company-name">
               <Form.Label>Company name*</Form.Label>
               <Form.Control
+                value={experienceObj.company}
                 type="text"
                 placeholder="Ex: Microsoft"
                 required
@@ -63,6 +77,7 @@ const ExperienceModal = () => {
             <Form.Group className="mb-3 text-muted" controlId="location">
               <Form.Label>Location</Form.Label>
               <Form.Control
+                value={experienceObj.area}
                 type="text"
                 placeholder="Ex: London, United Kingdom"
                 onChange={(e) =>
@@ -146,7 +161,9 @@ const ExperienceModal = () => {
               </Form.Text>
             </Form.Group>
 
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" onClick={()=>{
+              dispatch(addExperienceAsync(profile._id, experienceObj, handleClose));
+            }}>
               Save
             </Button>
           </Form>
