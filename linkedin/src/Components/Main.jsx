@@ -5,6 +5,7 @@ import { Card, Button } from "react-bootstrap";
 import Detail from "./Detail";
 import Resource from "./Resource";
 import Education from "./Education";
+import Experience from "./Experience";
 
 const Main = () => {
   const myData = useSelector((state) => state.profile.data);
@@ -61,6 +62,7 @@ const Main = () => {
       <Detail />
       <Resource />
       <Education />
+      <Experience />
     </>
   );
 };
