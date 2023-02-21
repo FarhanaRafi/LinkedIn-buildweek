@@ -7,27 +7,50 @@ import {
 } from "react-icons/bs";
 import { BiMessageRoundedDots, BiSearchAlt2 } from "react-icons/bi";
 import { TbGridDots } from "react-icons/tb";
-import { Button, Dropdown, Form, InputGroup } from "react-bootstrap";
+import { Dropdown, Form, InputGroup } from "react-bootstrap";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 
 const NavBar = () => {
+  const [searchWord, setSearchWord] = useState("");
+  const profilesList = useSelector((state) => state.profiles.profiles);
+
   return (
     <div className="nav-bar-container-container">
       <div className="nav-bar-container">
-        <a href="/">
-          <BsLinkedin className="in-icon linkedin-icon" />
-        </a>
-        <InputGroup className="mb-3 search-bar-container">
-          <BiSearchAlt2 />
-          <Form.Control
-            className="search-bar"
-            placeholder="Search"
-            aria-label="search"
-            aria-describedby="basic-addon2"
-            //   onChange={(e) => {
-            //     dispatch(getSongsActionAsync(e.target.value));
-            //   }}
-          />
-        </InputGroup>
+        <div className="relative">
+          <a href="/">
+            <BsLinkedin className="in-icon linkedin-icon" />
+          </a>
+          <InputGroup className="mb-3 search-bar-container">
+            <BiSearchAlt2 />
+            <Form.Control
+              className="search-bar"
+              placeholder="Search"
+              aria-label="search"
+              aria-describedby="basic-addon2"
+              onChange={(e) => {
+                setSearchWord(e.target.value.toLowerCase());
+              }}
+            />
+          </InputGroup>
+          <div className="absolute mt-1 w-full p2 bg-white shadow-lg rounded-bl rounded-br max-h-36 overflow-y-auto">
+            {searchWord !== "" &&
+              profilesList.map((person, index) => {
+                return (
+                  (person.name.toLowerCase().includes(searchWord) ||
+                    person.surname.toLowerCase().includes(searchWord)) && (
+                    <div
+                      key={index}
+                      className="cursor-pointer hover:bg-black hover:bg-opacity-10 p-2"
+                    >
+                      {person.name}, {person.surname}
+                    </div>
+                  )
+                );
+              })}
+          </div>
+        </div>
         <div className="icon-link-section">
           <a href="/" className="links">
             <BsHouseDoorFill />

@@ -8,7 +8,7 @@ const Detail = () => {
     <>
       <div>
         <Card className="mt-3">
-          <Card.Body style={{ height: "25vh" }}>
+          <Card.Body style={{ height: "32vh" }}>
             <Card.Text>
               <h5>
                 <strong>Analytics</strong>
