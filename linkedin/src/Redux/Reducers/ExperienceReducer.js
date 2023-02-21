@@ -1,4 +1,4 @@
-import { GET_EXPERIENCES, PUT_EXPERIENCE } from "../Actions";
+import { DELETE_EXPERIENCE, GET_EXPERIENCES, PUT_EXPERIENCE } from "../Actions";
 
 const initialState = {
   experiences: [],
@@ -15,6 +15,11 @@ const experienceReducer = (state = initialState, action) => {
       return {
         ...state,
       };
+    case DELETE_EXPERIENCE:
+      return {
+        ...state,
+      };
+
     default:
       return state;
   }
