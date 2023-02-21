@@ -2,18 +2,18 @@ export const GET_MY_OWN_PROFILE = "GET_MY_OWN_PROFILE";
 export const GET_PROFILES = "GET_PROFILES";
 export const GET_EXPERIENCES = "GET_EXPERIENCES";
 export const ADD_EXPERIENCE = "ADD_EXPERIENCE";
-export const PUT_EXPERIENCE = "PUT_EXPERIENCE"
+export const PUT_EXPERIENCE = "PUT_EXPERIENCE";
 
 const getOptions = (method) => {
   return {
     method: method,
     headers: {
       Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzNDZlNDgzODFmYzAwMTNmZmZhZDkiLCJpYXQiOjE2NzY4ODg0NzAsImV4cCI6MTY3ODA5ODA3MH0.AYIsvNXcD-Xnx3yf_2zgpkcNNyuB19GZwp9jMm6Y6Jc",
-        "Content-Type": "application/json"
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzNDZlNDgzODFmYzAwMTNmZmZhZDkiLCJpYXQiOjE2NzY4ODg0NzAsImV4cCI6MTY3ODA5ODA3MH0.AYIsvNXcD-Xnx3yf_2zgpkcNNyuB19GZwp9jMm6Y6Jc",
+      "Content-Type": "application/json",
     },
   };
-}
+};
 
 export const getMyProfileAsync = () => {
   return async (dispatch, getState) => {
@@ -25,7 +25,6 @@ export const getMyProfileAsync = () => {
 
       if (res.ok) {
         let fetchProfile = await res.json();
-        console.log(fetchProfile);
         dispatch({
           type: GET_MY_OWN_PROFILE,
           payload: fetchProfile,
@@ -64,6 +63,7 @@ export const getProfilesAsync = () => {
 };
 
 export const getExperiencesAsync = (userId) => {
+  console.log(userId, "userid");
   return async (dispatch, getState) => {
     try {
       let res = await fetch(
@@ -98,9 +98,9 @@ export const addExperienceAsync = (userId, data, handleClose) => {
       if (res.ok) {
         let addedExperience = await res.json();
 
-        console.log(addedExperience)
-        handleClose()
-        dispatch(getExperiencesAsync(userId))
+        console.log(addedExperience);
+        handleClose();
+        dispatch(getExperiencesAsync(userId));
       } else {
         console.log("error");
       }
@@ -133,10 +133,7 @@ export const addExperienceAsync = (userId, data, handleClose) => {
     }
   };*/
 
-
-
-
-  /*return async (dispatch, getState) => {
+/*return async (dispatch, getState) => {
     try {
       let res = await fetch(
         `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences`,
@@ -158,12 +155,11 @@ export const addExperienceAsync = (userId, data, handleClose) => {
   };
 };*/
 
-
 export const putExperiencesAsync = (userId, expId, experience) => {
   return async (dispatch) => {
     try {
       let res = await fetch(
-       `https:striveschool-api.herokuapp.com/api/profile/${userId}/experiences/${expId}`,
+        `https:striveschool-api.herokuapp.com/api/profile/${userId}/experiences/${expId}`,
         { ...getOptions("PUT"), body: JSON.stringify(experience) }
       );
       if (res.ok) {

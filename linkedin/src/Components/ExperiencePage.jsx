@@ -13,13 +13,13 @@ const ExperiencePage = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => {
     setShow(false);
-    setEditModal(false)
+    setEditModal(false);
   };
   const handleShow = () => setShow(true);
   const dispatch = useDispatch();
   const id = useSelector((state) => state.profile.data);
   const [editModal, setEditModal] = useState(false);
-  const [experience, setExperience] = useState(null)
+  const [experience, setExperience] = useState(null);
 
   const experienceFromRedux = useSelector(
     (state) => state.experience.experiences
@@ -48,7 +48,11 @@ const ExperiencePage = () => {
                         backdrop="static"
                         keyboard={false}
                       >
-                        <ExperienceModal edit={editModal} handleClose={handleClose} experience={experience}/>
+                        <ExperienceModal
+                          edit={editModal}
+                          handleClose={handleClose}
+                          experience={experience}
+                        />
                       </Modal>
                     </span>
                   </div>
@@ -56,16 +60,12 @@ const ExperiencePage = () => {
                   {experienceFromRedux.map((exp) => {
                     return (
                       <div>
-
-                      
                         <span>
                           <div className="ml-4 d-flex">
                             {"  "}
                             <strong>{exp.role}</strong>
-                        
-                      
-                          <div className="ml-auto">
 
+                            <div className="ml-auto">
                               <FiEdit2 onClick={handleShow} />
                               <Modal
                                 show={show}
@@ -73,9 +73,12 @@ const ExperiencePage = () => {
                                 backdrop="static"
                                 keyboard={false}
                               >
-                                <EditExperienceModal expId={exp._id} handleClose={handleClose} />
+                                <EditExperienceModal
+                                  expId={exp._id}
+                                  handleClose={handleClose}
+                                />
                               </Modal>
-                          </div>
+                            </div>
                           </div>
                           <div className="ml-4 mt-n2">
                             {exp.company}, {exp.area}
@@ -86,7 +89,6 @@ const ExperiencePage = () => {
                           </div>
                         </span>
                         <hr />
-
                       </div>
                     );
                   })}

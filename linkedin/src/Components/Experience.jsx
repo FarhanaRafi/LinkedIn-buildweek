@@ -25,7 +25,7 @@ const Experience = () => {
   useEffect(() => {
     dispatch(getExperiencesAsync(id._id));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [experienceFromRedux]);
+  }, []);
 
   return (
     <>
