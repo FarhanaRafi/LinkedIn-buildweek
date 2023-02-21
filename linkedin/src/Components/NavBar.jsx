@@ -18,7 +18,7 @@ const NavBar = () => {
   return (
     <div className="nav-bar-container-container">
       <div className="nav-bar-container">
-        <div className="relative">
+        <div className="d-flex">
           <a href="/">
             <BsLinkedin className="in-icon linkedin-icon" />
           </a>
