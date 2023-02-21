@@ -4,8 +4,15 @@ import { BsPlusLg } from "react-icons/bs";
 import { FiEdit2 } from "react-icons/fi";
 import ExperienceModal from "./ExperienceModal";
 import { Link } from "react-router-dom";
+import { Modal } from "react-bootstrap";
+import { useState } from "react";
 
 const Experience = () => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <>
       <div>
@@ -15,12 +22,16 @@ const Experience = () => {
               <div className="mb-3 d-flex  mr-auto">
                 <h5>Experience</h5>
                 <span className="ml-auto">
-                  <BsPlusLg
-                    onClick={() => {
-                      <ExperienceModal />;
-                    }}
-                  />
+                  <BsPlusLg onClick={handleShow} />
                 </span>
+                <Modal
+                  show={show}
+                  onHide={handleClose}
+                  backdrop="static"
+                  keyboard={false}
+                >
+                  <ExperienceModal />
+                </Modal>
 
                 <Link to="/experience-page" className="ml-3 ">
                   <FiEdit2 />
