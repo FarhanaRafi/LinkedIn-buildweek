@@ -6,7 +6,7 @@ const Resource = () => {
     <>
       <div>
         <Card className="mt-3">
-          <Card.Body style={{ height: "25vh" }}>
+          <Card.Body style={{ height: "31vh" }}>
             <Card.Text>
               <h5>
                 <strong>About</strong>
