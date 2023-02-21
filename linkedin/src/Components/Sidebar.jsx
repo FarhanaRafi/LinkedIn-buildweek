@@ -64,6 +64,7 @@ const Sidebar = () => {
           return (
             <Modal.Body>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
               <img className="sidebar-images" src={profile.image} alt="avatar" />
               <p>
                 {profile.name} {profile.surname}
@@ -71,6 +72,9 @@ const Sidebar = () => {
               <p>{profile.title}</p>
               <Button variant="secondary">Connect</Button>
 =======
+=======
+
+>>>>>>> Stashed changes
               <p className="sidebar-name">
                 <img
                   className="sidebar-images mr-2"
@@ -85,6 +89,9 @@ const Sidebar = () => {
   <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
 </svg>  Connect</Button>
               <hr className="mb-n3" />
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
             </Modal.Body>
           );
@@ -100,6 +107,7 @@ const Sidebar = () => {
           return (
             <Modal.Body>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
               <img className="sidebar-images" src={profile.image} alt="avatar"/>
               <p>
                 {profile.name} {profile.surname}
@@ -107,6 +115,8 @@ const Sidebar = () => {
               <p>{profile.title}</p>
               <Button variant="secondary">Connect</Button>
 =======
+=======
+>>>>>>> Stashed changes
               <p className="sidebar-name">
                 <img
                   className="sidebar-images mr-2"
@@ -123,6 +133,9 @@ const Sidebar = () => {
 </svg>  Connect
               </Button>
               <hr className="mb-n3 " />
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
             </Modal.Body>
           );
