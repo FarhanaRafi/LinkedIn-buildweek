@@ -1,5 +1,37 @@
 .sidebar-images {
+<<<<<<< Updated upstream
   height: 20px;
+=======
+  height: 2.5em;
+>>>>>>> Stashed changes
   border-radius: 50%;
 }
-body{background-color: #F3F2EF;}
+
+body{
+  background-color: #F3F2EF;
+}
+
+.sidebar-headers{
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 25px;
+}
+
+.sidebar-name{
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 21px;
+}
+
+.sidebar-title{
+    font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.sidebar-button{
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  color: #747474;
+}
