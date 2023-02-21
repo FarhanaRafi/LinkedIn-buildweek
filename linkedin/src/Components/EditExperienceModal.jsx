@@ -1,14 +1,25 @@
 import React, { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
+import { useSelector, useDispatch } from "react-redux";
+import { putExperiencesAsync } from "../Redux/Actions";
 
 const EditExperienceModal = (props) => {
   const experienceId = props.expId;
+  const userId = useSelector((state) => state.profile.data._id);
+  // const updateExperience = useSelector((state) => state.experience.experiences);
+  const dispatch = useDispatch();
+
   const [experienceObj, setExperienceObj] = useState({
     role: "",
     company: "",
     startDate: "",
     endDate: "",
+    description: "",
+    area: "",
+    username: "",
   });
+  console.log(experienceObj, "experience Obj");
+
   return (
     <>
       <Modal.Header closeButton>
@@ -26,6 +37,7 @@ const EditExperienceModal = (props) => {
             <Form.Group className="mb-3 text-muted" controlId="title">
               <Form.Label>Title*</Form.Label>
               <Form.Control
+                value={experienceObj.role}
                 type="text"
                 placeholder="Ex: Retail Sales Manager"
                 onChange={(e) =>
@@ -49,6 +61,7 @@ const EditExperienceModal = (props) => {
             <Form.Group className="mb-3 text-muted" controlId="company-name">
               <Form.Label>Company name*</Form.Label>
               <Form.Control
+                value={experienceObj.company}
                 type="text"
                 placeholder="Ex: Microsoft"
                 required
@@ -64,8 +77,10 @@ const EditExperienceModal = (props) => {
             <Form.Group className="mb-3 text-muted" controlId="location">
               <Form.Label>Location</Form.Label>
               <Form.Control
+                value={experienceObj.area}
                 type="text"
                 placeholder="Ex: London, United Kingdom"
+                required
                 onChange={(e) =>
                   setExperienceObj({
                     ...experienceObj,
@@ -85,6 +100,7 @@ const EditExperienceModal = (props) => {
               <Form.Label>Start date* </Form.Label>
               <div>
                 <Form.Control
+                  value={experienceObj.startDate}
                   type="date"
                   placeholder=""
                   required
@@ -103,7 +119,6 @@ const EditExperienceModal = (props) => {
                 <Form.Control
                   type="date"
                   placeholder=""
-                  required
                   onChange={(e) =>
                     setExperienceObj({
                       ...experienceObj,
@@ -127,8 +142,10 @@ const EditExperienceModal = (props) => {
             <Form.Group className="mb-3 text-muted" controlId="description">
               <Form.Label>Description</Form.Label>
               <Form.Control
+                value={experienceObj.description}
                 type="text"
                 placeholder=""
+                required
                 onChange={(e) =>
                   setExperienceObj({
                     ...experienceObj,
@@ -146,9 +163,20 @@ const EditExperienceModal = (props) => {
                 Appears below your name at the top of the profile
               </Form.Text>
             </Form.Group>
+
             <div className="d-flex justify-content-between">
               <Button variant="danger">Delete</Button>
-              <Button variant="primary" type="submit">
+              <Button
+                variant="primary"
+                onClick={() => {
+                  console.log(
+                    `user id: ${userId}, exp id: ${experienceId}, exp obj: ${experienceObj}`
+                  );
+                  dispatch(
+                    putExperiencesAsync(userId, experienceId, experienceObj)
+                  );
+                }}
+              >
                 Save
               </Button>
             </div>
