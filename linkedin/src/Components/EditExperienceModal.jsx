@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 
-const EditExperienceModal = () => {
+const EditExperienceModal = (props) => {
+  const experienceId = props.expId;
   const [experienceObj, setExperienceObj] = useState({
     role: "",
     company: "",
@@ -11,7 +12,7 @@ const EditExperienceModal = () => {
   return (
     <>
       <Modal.Header closeButton>
-        <Modal.Title>Add experience</Modal.Title>
+        <Modal.Title>Edit experience</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <div className="notify-section"></div>
@@ -145,10 +146,12 @@ const EditExperienceModal = () => {
                 Appears below your name at the top of the profile
               </Form.Text>
             </Form.Group>
-
-            <Button variant="primary" type="submit">
-              Save
-            </Button>
+            <div className="d-flex justify-content-between">
+              <Button variant="danger">Delete</Button>
+              <Button variant="primary" type="submit">
+                Save
+              </Button>
+            </div>
           </Form>
         </div>
       </Modal.Body>

@@ -145,10 +145,11 @@ const ExperienceModal = () => {
                 Appears below your name at the top of the profile
               </Form.Text>
             </Form.Group>
-
-            <Button variant="primary" type="submit">
-              Save
-            </Button>
+            <div className="d-flex justify-content-end">
+              <Button variant="primary" type="submit">
+                Save
+              </Button>
+            </div>
           </Form>
         </div>
       </Modal.Body>
