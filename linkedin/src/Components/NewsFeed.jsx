@@ -8,6 +8,7 @@ import { useState } from "react";
 import FeedModal from "./FeedModal";
 import { HiOutlinePhotograph } from "react-icons/hi";
 import { MdVideocam, MdOutlineArticle } from "react-icons/md";
+import { format } from "date-fns";
 
 const NewsFeed = () => {
   const posts = useSelector((state) => state.posts.post);
@@ -98,7 +99,7 @@ const NewsFeed = () => {
           return (
             <Card body className="mt-3">
               <div className="d-flex ">
-                <p>
+                <div>
                   {post.user && (
                     <img
                       src={post.user.image}
@@ -108,7 +109,10 @@ const NewsFeed = () => {
                     />
                   )}
                   <strong className="ml-3">{post.username}</strong>
-                </p>
+                  <p className=" text-muted mt-n3 create-date">
+                    {format(new Date(post.createdAt), "dd LLL, yyyy")}
+                  </p>
+                </div>
                 <span className="ml-auto text-primary ">
                   {" "}
                   <BsPlusLg />
