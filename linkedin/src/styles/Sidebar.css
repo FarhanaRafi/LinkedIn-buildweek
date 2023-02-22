@@ -32,3 +32,48 @@ body{
   line-height: 20px;
   color: #747474;
 }
+
+.sidebar-top-button{
+  width: 6em;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.sidebar-company-logo{
+  height: 4em;
+  width: 5em
+}
+
+.text-muted{
+  font-size: smaller;
+}
+
+.sidebar-company-logo-left{
+  height: 4em;
+  width: 5em;
+  border-radius: 50%;
+}
+
+.sidebar-text-explore{
+  font-size: 1em;
+  font-weight: 300;
+}
+
+.sidebar-modal{
+  padding: 0.5em;
+}
+
+.sidebar-promoted-images{
+  width: 3em;
+  height: 4em;
+  margin-bottom: 1em;
+}
+.sidebar-show-button{
+  background-color: transparent;
+  color: black;
+  border: none;
+}
+.sidebar-show-button:hover {
+  background-color: #ebebeb;
+}
