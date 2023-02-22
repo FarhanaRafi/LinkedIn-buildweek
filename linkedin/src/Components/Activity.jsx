@@ -33,8 +33,8 @@ const Activity = () => {
                     {post.username.includes("Farhana Rafi") ? (
                       <>
                         <span>
-                          <Link to={"/feed/" + post._id}>
-                            <div className="ml-4 mt-n2">
+                          <Link to={"/feed/" + post._id} className="act">
+                            <div className="ml-4 mt-n2 activity">
                               {post.text}
                               <br />
                             </div>
