@@ -3,9 +3,16 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Modal, Form, Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteUpdateAsync, updatePostAsync } from "../Redux/Actions";
+import { useNavigate } from "react-router-dom";
+
+import {
+  deleteUpdateAsync,
+  updatePostAsync,
+  getPostAsync,
+} from "../Redux/Actions";
 
 const UpdateFeed = (props) => {
+  const navigate = useNavigate();
   const [updatePost, setUpdatePost] = useState({
     text: props.post.text,
   });
@@ -13,7 +20,8 @@ const UpdateFeed = (props) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(updatePostAsync(postId, updatePost));
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [updatePost]);
 
   return (
     <>
@@ -26,6 +34,7 @@ const UpdateFeed = (props) => {
             onSubmit={(e) => {
               e.preventDefault();
               dispatch(updatePostAsync(postId, updatePost));
+              dispatch(getPostAsync());
             }}
           >
             <Form.Group>
@@ -49,6 +58,7 @@ const UpdateFeed = (props) => {
             variant="danger"
             onClick={() => {
               dispatch(deleteUpdateAsync(postId, props.handleClose));
+              navigate(`/feed`);
             }}
           >
             Delete
