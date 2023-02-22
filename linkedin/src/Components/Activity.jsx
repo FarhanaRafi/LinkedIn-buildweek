@@ -18,13 +18,6 @@ const Activity = () => {
             <Card.Text>
               <div className="mb-3 d-flex  mr-auto">
                 <h5>Activity</h5>
-                {/* <span className="ml-auto">
-                  <BsPlusLg onClick={handleShow} />
-                </span> */}
-
-                {/* <Link to="/feed/:id" className="ml-3">
-                  <FiEdit2 />
-                </Link> */}
               </div>
               {/* activityFromRedux.username  "Farhana Rafi"  */}
               {activityFromRedux.map((post) => {

@@ -3,12 +3,15 @@ import { useEffect } from "react";
 import { Card, Form, Col, Row, Modal } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { getPostAsync } from "../Redux/Actions";
-import { BsPlusLg } from "react-icons/bs";
+import { BsPlusLg, BsCalendarDate } from "react-icons/bs";
 import { useState } from "react";
 import FeedModal from "./FeedModal";
+import { HiOutlinePhotograph } from "react-icons/hi";
+import { MdVideocam, MdOutlineArticle } from "react-icons/md";
 
 const NewsFeed = () => {
   const posts = useSelector((state) => state.posts.post);
+  const id = useSelector((state) => state.profile.data);
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
 
@@ -36,14 +39,20 @@ const NewsFeed = () => {
             }}
           >
             <Form.Group as={Row}>
-              {/* <Form.Label column sm="2">
-                Password
-              </Form.Label> */}
+              <Form.Label column sm="2">
+                <img
+                  src={id.image}
+                  alt="logo"
+                  height={50}
+                  style={{ borderRadius: "50%" }}
+                />
+              </Form.Label>
               <Col sm="10">
                 <Form.Control
                   type="text"
                   placeholder="Start a Post...."
                   onClick={handleShow}
+                  className="rounded-pill ml-n4"
                 />
 
                 <Modal
@@ -57,6 +66,32 @@ const NewsFeed = () => {
               </Col>
             </Form.Group>
           </Form>
+          <Col>
+            <span>
+              <HiOutlinePhotograph className="text-primary" /> Photos
+            </span>
+            <span className="ml-5">
+              <MdVideocam
+                className="text-success"
+                style={{ fontSize: "20px" }}
+              />{" "}
+              Video
+            </span>
+            <span className="ml-5">
+              <BsCalendarDate
+                className="text-danger"
+                style={{ fontSize: "20px" }}
+              />{" "}
+              Event
+            </span>
+            <span className="ml-5">
+              <MdOutlineArticle
+                className="text-danger"
+                style={{ fontSize: "20px" }}
+              />{" "}
+              Write article
+            </span>
+          </Col>
         </Card>
 
         {posts.map((post) => {
@@ -64,7 +99,15 @@ const NewsFeed = () => {
             <Card body className="mt-3">
               <div className="d-flex ">
                 <p>
-                  <strong>{post.username}</strong>
+                  {post.user && (
+                    <img
+                      src={post.user.image}
+                      alt="profile"
+                      height={50}
+                      style={{ borderRadius: "50%" }}
+                    />
+                  )}
+                  <strong className="ml-3">{post.username}</strong>
                 </p>
                 <span className="ml-auto text-primary ">
                   {" "}
