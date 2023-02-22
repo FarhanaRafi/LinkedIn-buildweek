@@ -4,7 +4,7 @@ import { Modal } from "react-bootstrap";
 const FeedLeft = () => {
   return (
     <>
-      <Modal.Dialog>
+      <Modal.Dialog className="sticky-top">
         <Modal.Body>
           <div className="d-flex">
             <p>Promoted</p>

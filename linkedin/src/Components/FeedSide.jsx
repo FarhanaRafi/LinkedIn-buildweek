@@ -6,9 +6,9 @@ const FeedSide = () => {
   const profiles = useSelector((state) => state.profiles.profiles);
   return (
     <>
-      <div>
+      <div className="sticky-top">
         {" "}
-        <Modal.Dialog className="mt-5">
+        <Modal.Dialog className="mt-5 ">
           <Modal.Body>
             <p className="d-flex">
               <span className="mr-3">Edit public profile & URL</span>
@@ -41,7 +41,7 @@ const FeedSide = () => {
             </p>
           </Modal.Body>
         </Modal.Dialog>
-        <Modal.Dialog className="d-flex text-center">
+        <Modal.Dialog className="d-flex text-center ">
           <Modal.Body className="sidebar-modal">
             <div className="d-flex">
               <p className="text-muted ml-auto">Ad</p>
