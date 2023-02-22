@@ -7,7 +7,7 @@ import { deleteUpdateAsync, updatePostAsync } from "../Redux/Actions";
 
 const UpdateFeed = (props) => {
   const [updatePost, setUpdatePost] = useState({
-    text: "",
+    text: props.post.text,
   });
   const postId = useSelector((state) => state.selectedPost.selected._id);
   const dispatch = useDispatch();
