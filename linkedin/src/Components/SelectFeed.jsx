@@ -56,7 +56,10 @@ const SelectFeed = (props) => {
                         backdrop="static"
                         keyboard={false}
                       >
-                        <UpdateFeed handleClose={handleClose} />
+                        <UpdateFeed
+                          post={selectedPost}
+                          handleClose={handleClose}
+                        />
                       </Modal>
                       <Dropdown.Item onClick={handleShow}>
                         <AiFillDelete className="mr-3" />
