@@ -69,6 +69,7 @@ const UpdateFeed = (props) => {
             onClick={(e) => {
               e.preventDefault();
               dispatch(updatePostAsync(postId, updatePost, props.handleClose));
+              navigate(`/feed`);
             }}
           >
             Save
