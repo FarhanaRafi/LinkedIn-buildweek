@@ -172,7 +172,9 @@ export const getPostAsync = () => {
         console.log(fetchedPost);
         dispatch({
           type: GET_POSTS,
-          payload: fetchedPost,
+          payload: fetchedPost.sort(
+            (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+          ),
         });
       } else {
         console.log("error");
