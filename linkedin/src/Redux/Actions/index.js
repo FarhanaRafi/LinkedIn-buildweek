@@ -5,6 +5,7 @@ export const ADD_EXPERIENCE = "ADD_EXPERIENCE";
 export const PUT_EXPERIENCE = "PUT_EXPERIENCE";
 export const DELETE_EXPERIENCE = "DELETE_EXPERIENCE";
 export const GET_POSTS = "GET_POSTS";
+export const ADD_POST = "ADD_POST";
 
 const getOptions = (method) => {
   return {
@@ -169,6 +170,32 @@ export const getPostAsync = () => {
         dispatch({
           type: GET_POSTS,
           payload: fetchedPost,
+        });
+      } else {
+        console.log("error");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const addPostAsync = (handleClose, data) => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await fetch(
+        `https://striveschool-api.herokuapp.com/api/posts/`,
+        { ...getOptions("POST"), body: JSON.stringify(data) }
+      );
+
+      if (res.ok) {
+        let addedPost = await res.json();
+
+        console.log(addedPost);
+        handleClose();
+        dispatch({
+          type: ADD_POST,
+          payload: addedPost,
         });
       } else {
         console.log("error");
