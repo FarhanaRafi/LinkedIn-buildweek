@@ -4,6 +4,7 @@ export const GET_EXPERIENCES = "GET_EXPERIENCES";
 export const ADD_EXPERIENCE = "ADD_EXPERIENCE";
 export const PUT_EXPERIENCE = "PUT_EXPERIENCE";
 export const DELETE_EXPERIENCE = "DELETE_EXPERIENCE";
+export const GET_POSTS = "GET_POSTS";
 
 const getOptions = (method) => {
   return {
@@ -110,51 +111,6 @@ export const addExperienceAsync = (userId, data, handleClose) => {
   };
 };
 
-/*export const editExperienceAsync = (userId, data, handleClose) => {
-  return async (dispatch) => {
-    try {
-      let res = await fetch(
-       `https:striveschool-api.herokuapp.com/api/profile/${userId}/experiences/${expId}`,
-        { ...getOptions("PUT"), body: JSON.stringify(data) }
-      );
-      if (res.ok) {
-        let fetchedPutExperience = await res.json();
-        console.log(fetchedPutExperience);
-        dispatch({
-          type: PUT_EXPERIENCE,
-          payload: fetchedPutExperience,
-        });
-        alert("Your experience has been updated");
-      } else {
-        alert("something went wrong updating");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };*/
-
-/*return async (dispatch, getState) => {
-    try {
-      let res = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences`,
-        { ...getOptions("PUT"), body: JSON.stringify(data) }
-      );
-
-      if (res.ok) {
-        let editExperience = await res.json();
-
-        console.log(editExperience)
-        handleClose()
-        dispatch(getExperiencesAsync(userId))
-      } else {
-        console.log("error");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-};*/
-
 export const putExperiencesAsync = (userId, expId, experience) => {
   return async (dispatch) => {
     try {
@@ -195,6 +151,30 @@ export const deleteExperienceAsync = (userId, expId) => {
       }
     } catch (err) {
       console.log(err);
+    }
+  };
+};
+
+export const getPostAsync = () => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await fetch(
+        `https://striveschool-api.herokuapp.com/api/posts/ `,
+        getOptions("GET")
+      );
+
+      if (res.ok) {
+        let fetchedPost = await res.json();
+        console.log(fetchedPost);
+        dispatch({
+          type: GET_POSTS,
+          payload: fetchedPost,
+        });
+      } else {
+        console.log("error");
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 };
