@@ -8,6 +8,7 @@ export const GET_POSTS = "GET_POSTS";
 export const ADD_POST = "ADD_POST";
 export const GET_SELECTED_POST = "GET_SELECTED_POST";
 export const UPDATE_POST = "UPDATE_POST";
+export const DELETE_POST = "DELETE_POST";
 
 const getOptions = (method) => {
   return {
@@ -250,6 +251,27 @@ export const updatePostAsync = (postId, data) => {
       }
     } catch (error) {
       console.log(error);
+    }
+  };
+};
+
+export const deleteUpdateAsync = (postId) => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await fetch(
+        `https://striveschool-api.herokuapp.com/api/posts/${postId}`,
+        { ...getOptions("DELETE") }
+      );
+
+      if (res.ok) {
+        dispatch({
+          type: DELETE_POST,
+        });
+      } else {
+        console.log("error");
+      }
+    } catch (err) {
+      console.log(err);
     }
   };
 };
