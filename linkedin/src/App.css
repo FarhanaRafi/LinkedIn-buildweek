@@ -48,3 +48,12 @@
   max-height: 90vh;
   overflow: auto;
 }
+
+.activity{
+  color: #282c34;
+  text-decoration: none;
+}
+
+.act:hover{
+  text-decoration: none;
+}
