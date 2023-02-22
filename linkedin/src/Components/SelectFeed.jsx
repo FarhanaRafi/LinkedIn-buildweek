@@ -3,16 +3,22 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getSelectedPostAsync } from "../Redux/Actions";
-import { Row, Col, Container, Card, Dropdown } from "react-bootstrap";
+import { Row, Col, Container, Card, Dropdown, Modal } from "react-bootstrap";
 import FeedLeft from "./FeedLeft";
 import FeedSide from "./FeedSide";
 import { FiMoreHorizontal, FiEdit2 } from "react-icons/fi";
 import { AiFillDelete } from "react-icons/ai";
+import UpdateFeed from "./UpdateFeed";
+import { useState } from "react";
 
 const SelectFeed = (props) => {
   let selectedPost = useSelector((state) => state.selectedPost.selected);
   const { id } = useParams();
   const dispatch = useDispatch();
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   console.log(id, "_____________");
   useEffect(() => {
@@ -38,9 +44,20 @@ const SelectFeed = (props) => {
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
-                      <Dropdown.Item href="#/action-1">
+                      <Dropdown.Item
+                        onClick={handleShow}
+                        handleClose={handleClose}
+                      >
                         <FiEdit2 className="mr-3" /> Edit Post
                       </Dropdown.Item>
+                      <Modal
+                        show={show}
+                        onHide={handleClose}
+                        backdrop="static"
+                        keyboard={false}
+                      >
+                        <UpdateFeed handleClose={handleClose} />
+                      </Modal>
                       <Dropdown.Item href="#/action-2">
                         <AiFillDelete className="mr-3" />
                         Delete Post
@@ -63,27 +80,3 @@ const SelectFeed = (props) => {
 };
 
 export default SelectFeed;
-
-//  const fetchSelectedPost = async () => {
-// try {
-//     let res = await fetch(
-//       `https://striveschool-api.herokuapp.com/api/posts/`,
-//       {
-//         headers: {
-//           Authorization:
-//             "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzNDZlNDgzODFmYzAwMTNmZmZhZDkiLCJpYXQiOjE2NzY4ODg0NzAsImV4cCI6MTY3ODA5ODA3MH0.AYIsvNXcD-Xnx3yf_2zgpkcNNyuB19GZwp9jMm6Y6Jc",
-//         },
-//       }
-//     );
-//     if (res.ok) {
-//       let data = await res.json();
-//       console.log(data, "+++++++++");
-//       dispatch({
-//         type: GET_SELECTED_POST,
-//         payload: data,
-//       });
-//     }
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
