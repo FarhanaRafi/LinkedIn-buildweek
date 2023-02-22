@@ -19,7 +19,7 @@ const Sidebar = () => {
         <Modal.Body>
           <p className="d-flex">
             <span className="mr-3">Edit public profile & URL</span>
-            
+
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -40,9 +40,8 @@ const Sidebar = () => {
               width="16"
               height="16"
               fill="currentColor"
-              className="bi bi-question-circle-fill"
+              className="bi bi-question-circle-fill ml-auto"
               viewBox="0 0 16 16"
-              className="ml-auto"
             >
               <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z" />
             </svg>
@@ -68,7 +67,11 @@ const Sidebar = () => {
           </div>
           <p className="text-muted">Get the latest jobs and industry news</p>
           <p>
-          <img src={profiles[0].image} alt="profile pic" className="sidebar-company-logo-left mr-3"/>
+            <img
+              src={profiles[0].image}
+              alt="profile pic"
+              className="sidebar-company-logo-left mr-3"
+            />
 
             <img
               src="https://images.unsplash.com/photo-1496200186974-4293800e2c20?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y29tcGFueSUyMGxvZ298ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
@@ -76,14 +79,14 @@ const Sidebar = () => {
               className="sidebar-company-logo ml-3"
             />
           </p>
-          <p className="sidebar-text-explore">Farhana, explore relevant opportunities with <strong>#slack</strong></p>
+          <p className="sidebar-text-explore">
+            Farhana, explore relevant opportunities with <strong>#slack</strong>
+          </p>
         </Modal.Body>
 
         <Button
-
           variant="outline-primary rounded-pill"
           className=" mb-2 sidebar-top-button mx-auto"
-
         >
           Follow
         </Button>
@@ -113,11 +116,9 @@ const Sidebar = () => {
                 </div>
               </p>
 
-
               <Button
                 variant="outline-secondary rounded-pill "
                 className="sidebar-button mt-n3 d-flex ml-5"
-
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -133,9 +134,7 @@ const Sidebar = () => {
                     d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"
                   />
                 </svg>{" "}
-
                 <span className="ml-1 sidebar-connect">Connect</span>
-
               </Button>
 
               <hr className="mb-n3" />
@@ -171,18 +170,15 @@ const Sidebar = () => {
               <Button
                 variant="outline-secondary rounded-pill"
                 className="mt-n3 sidebar-button d-flex ml-5"
-
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
                   height="16"
                   fill="currentColor"
-
                   class="bi bi-person-plus-fill"
                   viewBox="0 0 16 16"
                   className="sidebar-svg"
-
                 >
                   <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
                   <path
@@ -190,9 +186,7 @@ const Sidebar = () => {
                     d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"
                   />
                 </svg>{" "}
-
                 <span className="ml-1 sidebar-connect">Connect</span>
-
               </Button>
 
               <hr className="mb-n3 " />
@@ -200,19 +194,33 @@ const Sidebar = () => {
           );
         })}
 
-        <Button variant="secondary" onClick={showMoreProfiles} className="sidebar-show-button">
-          Show {numberOfProfiles === 445 ? "more" : "less"}   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
-</svg>
+        <Button
+          variant="secondary"
+          onClick={showMoreProfiles}
+          className="sidebar-show-button"
+        >
+          Show {numberOfProfiles === 445 ? "more" : "less"}{" "}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-chevron-compact-down"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"
+            />
+          </svg>
         </Button>
       </Modal.Dialog>
 
       <Modal.Dialog>
-
         <Modal.Body>
           <div className="d-flex">
             <p>Promoted</p>
-        <svg
+            <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
               height="16"
@@ -223,27 +231,72 @@ const Sidebar = () => {
             >
               <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
             </svg>
+          </div>
+          <div className="d-flex flex-column">
+            <div className="d-flex flex-row">
+              <img
+                src="https://images.unsplash.com/photo-1592093947163-51f1d258d110?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW4lMjBsb2dvfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                alt="linkedIn logo"
+                className="sidebar-promoted-images"
+              />{" "}
+              <h6 className="text-muted ml-3">Invitation from LinkedIn</h6>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-chevron-compact-right ml-auto"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"
+                />
+              </svg>
             </div>
-        <div className="d-flex flex-column">
-          <div className="d-flex flex-row">
-        <img src="https://images.unsplash.com/photo-1592093947163-51f1d258d110?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW4lMjBsb2dvfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="linkedIn logo" className="sidebar-promoted-images"/> <h6 className="text-muted ml-3">Invitation from LinkedIn</h6>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-right ml-auto" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
-</svg>
-        </div>
-        <div className="d-flex flex-row">
-        <img src="https://images.unsplash.com/photo-1529612700005-e35377bf1415?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Y29tcGFueSUyMGxvZ298ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" alt="google logo" className="sidebar-promoted-images"/> <h6 className="text-muted ml-3">Everyone Googles</h6>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-right ml-auto" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
-</svg>
-        </div>
-        <div className="d-flex flex-row">
-        <img src="https://images.unsplash.com/photo-1562783912-21ad31ee2a83?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGNvbXBhbnklMjBsb2dvfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="jaguar logo" className="sidebar-promoted-images"/> <h6 className="text-muted ml-3">Work More Efficiently</h6>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-right ml-auto" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
-</svg>
-        </div>
-        </div>
+            <div className="d-flex flex-row">
+              <img
+                src="https://images.unsplash.com/photo-1529612700005-e35377bf1415?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Y29tcGFueSUyMGxvZ298ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
+                alt="google logo"
+                className="sidebar-promoted-images"
+              />{" "}
+              <h6 className="text-muted ml-3">Everyone Googles</h6>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-chevron-compact-right ml-auto"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"
+                />
+              </svg>
+            </div>
+            <div className="d-flex flex-row">
+              <img
+                src="https://images.unsplash.com/photo-1562783912-21ad31ee2a83?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGNvbXBhbnklMjBsb2dvfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                alt="jaguar logo"
+                className="sidebar-promoted-images"
+              />{" "}
+              <h6 className="text-muted ml-3">Work More Efficiently</h6>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-chevron-compact-right ml-auto"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"
+                />
+              </svg>
+            </div>
+          </div>
         </Modal.Body>
       </Modal.Dialog>
     </>
