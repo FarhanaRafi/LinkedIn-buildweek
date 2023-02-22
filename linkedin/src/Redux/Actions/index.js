@@ -235,7 +235,7 @@ export const getSelectedPostAsync = (postId) => {
   };
 };
 
-export const updatePostAsync = (postId, data) => {
+export const updatePostAsync = (postId, data, handleClose) => {
   return async (dispatch) => {
     try {
       let res = await fetch(
@@ -244,6 +244,7 @@ export const updatePostAsync = (postId, data) => {
       );
       if (res.ok) {
         let fetchedUpdatePost = await res.json();
+        handleClose();
         dispatch({
           type: UPDATE_POST,
           payload: fetchedUpdatePost,
@@ -257,7 +258,7 @@ export const updatePostAsync = (postId, data) => {
   };
 };
 
-export const deleteUpdateAsync = (postId) => {
+export const deleteUpdateAsync = (postId, handleClose) => {
   return async (dispatch, getState) => {
     try {
       let res = await fetch(
@@ -266,6 +267,7 @@ export const deleteUpdateAsync = (postId) => {
       );
 
       if (res.ok) {
+        handleClose();
         dispatch({
           type: DELETE_POST,
         });

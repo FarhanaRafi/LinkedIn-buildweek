@@ -19,7 +19,7 @@ const UpdateFeed = (props) => {
     <>
       <div>
         <Modal.Header closeButton>
-          <Modal.Title>Create a Post</Modal.Title>
+          <Modal.Title>Update a Post</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form
@@ -48,7 +48,7 @@ const UpdateFeed = (props) => {
           <Button
             variant="danger"
             onClick={() => {
-              dispatch(deleteUpdateAsync(postId));
+              dispatch(deleteUpdateAsync(postId, props.handleClose));
             }}
           >
             Delete
@@ -58,7 +58,7 @@ const UpdateFeed = (props) => {
             variant="primary"
             onClick={(e) => {
               e.preventDefault();
-              dispatch(updatePostAsync(postId, updatePost));
+              dispatch(updatePostAsync(postId, updatePost, props.handleClose));
             }}
           >
             Save
