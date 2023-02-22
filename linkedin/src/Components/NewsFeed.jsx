@@ -36,25 +36,17 @@ const NewsFeed = () => {
             }}
           >
             <Form.Group as={Row}>
-              <Form.Label column sm="2">
+              {/* <Form.Label column sm="2">
                 Password
-              </Form.Label>
+              </Form.Label> */}
               <Col sm="10">
                 <Form.Control
                   type="text"
                   placeholder="Start a Post...."
                   onClick={handleShow}
-                  //   value={addPost.text}
-                  //   onChange={(e) =>
-                  //     setAddPost({
-                  //       ...addPost,
-                  //       text: e.target.value,
-                  //     })
-                  //   }
                 />
 
                 <Modal
-                  // closeButton={}
                   show={show}
                   onHide={handleClose}
                   backdrop="static"
@@ -70,7 +62,6 @@ const NewsFeed = () => {
         {posts.map((post) => {
           return (
             <Card body className="mt-3">
-              {/* <img src={post.user.image} alt="img" /> */}
               <div className="d-flex ">
                 <p>
                   <strong>{post.username}</strong>
