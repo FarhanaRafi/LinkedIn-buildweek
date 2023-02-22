@@ -10,6 +10,7 @@ import { TbGridDots } from "react-icons/tb";
 import { Dropdown, Form, InputGroup } from "react-bootstrap";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const [searchWord, setSearchWord] = useState("");
@@ -52,10 +53,12 @@ const NavBar = () => {
           </div>
         </div>
         <div className="icon-link-section">
-          <a href="/" className="links">
+          <Link to="/feed" className="links">
+            {/* <a href="/" > */}
             <BsHouseDoorFill />
             Home
-          </a>
+            {/* </a> */}
+          </Link>
           <a href="/" className="links">
             <BsPeopleFill />
             My Network

@@ -2,18 +2,21 @@ export const GET_MY_OWN_PROFILE = "GET_MY_OWN_PROFILE";
 export const GET_PROFILES = "GET_PROFILES";
 export const GET_EXPERIENCES = "GET_EXPERIENCES";
 export const ADD_EXPERIENCE = "ADD_EXPERIENCE";
-export const PUT_EXPERIENCE = "PUT_EXPERIENCE"
+export const PUT_EXPERIENCE = "PUT_EXPERIENCE";
+export const DELETE_EXPERIENCE = "DELETE_EXPERIENCE";
+export const GET_POSTS = "GET_POSTS";
+export const ADD_POST = "ADD_POST";
 
 const getOptions = (method) => {
   return {
     method: method,
     headers: {
       Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzNDZlNDgzODFmYzAwMTNmZmZhZDkiLCJpYXQiOjE2NzY4ODg0NzAsImV4cCI6MTY3ODA5ODA3MH0.AYIsvNXcD-Xnx3yf_2zgpkcNNyuB19GZwp9jMm6Y6Jc",
-        "Content-Type": "application/json"
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzNDZlNDgzODFmYzAwMTNmZmZhZDkiLCJpYXQiOjE2NzY4ODg0NzAsImV4cCI6MTY3ODA5ODA3MH0.AYIsvNXcD-Xnx3yf_2zgpkcNNyuB19GZwp9jMm6Y6Jc",
+      "Content-Type": "application/json",
     },
   };
-}
+};
 
 export const getMyProfileAsync = () => {
   return async (dispatch, getState) => {
@@ -25,7 +28,6 @@ export const getMyProfileAsync = () => {
 
       if (res.ok) {
         let fetchProfile = await res.json();
-        console.log(fetchProfile);
         dispatch({
           type: GET_MY_OWN_PROFILE,
           payload: fetchProfile,
@@ -98,9 +100,9 @@ export const addExperienceAsync = (userId, data, handleClose) => {
       if (res.ok) {
         let addedExperience = await res.json();
 
-        console.log(addedExperience)
-        handleClose()
-        dispatch(getExperiencesAsync(userId))
+        console.log(addedExperience);
+        handleClose();
+        dispatch(getExperiencesAsync(userId));
       } else {
         console.log("error");
       }
@@ -110,16 +112,15 @@ export const addExperienceAsync = (userId, data, handleClose) => {
   };
 };
 
-/*export const editExperienceAsync = (userId, data, handleClose) => {
+export const putExperiencesAsync = (userId, expId, experience) => {
   return async (dispatch) => {
     try {
       let res = await fetch(
-       `https:striveschool-api.herokuapp.com/api/profile/${userId}/experiences/${expId}`,
-        { ...getOptions("PUT"), body: JSON.stringify(data) }
+        `https:striveschool-api.herokuapp.com/api/profile/${userId}/experiences/${expId}`,
+        { ...getOptions("PUT"), body: JSON.stringify(experience) }
       );
       if (res.ok) {
         let fetchedPutExperience = await res.json();
-        console.log(fetchedPutExperience);
         dispatch({
           type: PUT_EXPERIENCE,
           payload: fetchedPutExperience,
@@ -131,24 +132,45 @@ export const addExperienceAsync = (userId, data, handleClose) => {
     } catch (error) {
       console.log(error);
     }
-  };*/
+  };
+};
 
-
-
-
-  /*return async (dispatch, getState) => {
+export const deleteExperienceAsync = (userId, expId) => {
+  return async (dispatch, getState) => {
     try {
       let res = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences`,
-        { ...getOptions("PUT"), body: JSON.stringify(data) }
+        `https:striveschool-api.herokuapp.com/api/profile/${userId}/experiences/${expId}`,
+        { ...getOptions("DELETE") }
       );
 
       if (res.ok) {
-        let editExperience = await res.json();
+        dispatch({
+          type: DELETE_EXPERIENCE,
+        });
+      } else {
+        console.log("error");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
 
-        console.log(editExperience)
-        handleClose()
-        dispatch(getExperiencesAsync(userId))
+export const getPostAsync = () => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await fetch(
+        `https://striveschool-api.herokuapp.com/api/posts/ `,
+        getOptions("GET")
+      );
+
+      if (res.ok) {
+        let fetchedPost = await res.json();
+        console.log(fetchedPost);
+        dispatch({
+          type: GET_POSTS,
+          payload: fetchedPost,
+        });
       } else {
         console.log("error");
       }
@@ -156,26 +178,27 @@ export const addExperienceAsync = (userId, data, handleClose) => {
       console.log(error);
     }
   };
-};*/
+};
 
-
-export const putExperiencesAsync = (userId, expId, experience) => {
-  return async (dispatch) => {
+export const addPostAsync = (handleClose, data) => {
+  return async (dispatch, getState) => {
     try {
       let res = await fetch(
-       `https:striveschool-api.herokuapp.com/api/profile/${userId}/experiences/${expId}`,
-        { ...getOptions("PUT"), body: JSON.stringify(experience) }
+        `https://striveschool-api.herokuapp.com/api/posts/`,
+        { ...getOptions("POST"), body: JSON.stringify(data) }
       );
+
       if (res.ok) {
-        let fetchedPutExperience = await res.json();
-        console.log(fetchedPutExperience);
+        let addedPost = await res.json();
+
+        console.log(addedPost);
+        handleClose();
         dispatch({
-          type: PUT_EXPERIENCE,
-          payload: fetchedPutExperience,
+          type: ADD_POST,
+          payload: addedPost,
         });
-        alert("Your experience has been updated");
       } else {
-        alert("something went wrong updating");
+        console.log("error");
       }
     } catch (error) {
       console.log(error);

@@ -62,7 +62,8 @@ const Experience = () => {
                       <div className="ml-4 mt-n2">
                         {exp.company}, {exp.area}
                         <br />
-                        {exp.startDate} -{exp.endDate}
+                        {format(new Date(exp.startDate), "LLL, yyyy")} -{" "}
+                        {format(new Date(exp.endDate), "LLL, yyyy")}
                         <br />
                         {exp.description}{" "}
                       </div>
