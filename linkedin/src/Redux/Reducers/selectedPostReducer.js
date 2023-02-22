@@ -1,4 +1,4 @@
-import { GET_SELECTED_POST, UPDATE_POST } from "../Actions";
+import { DELETE_POST, GET_SELECTED_POST, UPDATE_POST } from "../Actions";
 
 const initialState = {
   selected: [],
@@ -12,6 +12,10 @@ const selectedPostReducer = (state = initialState, action) => {
         selected: action.payload,
       };
     case UPDATE_POST:
+      return {
+        ...state,
+      };
+    case DELETE_POST:
       return {
         ...state,
       };

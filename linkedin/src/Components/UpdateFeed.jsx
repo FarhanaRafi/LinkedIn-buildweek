@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Modal, Form, Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { updatePostAsync } from "../Redux/Actions";
+import { deleteUpdateAsync, updatePostAsync } from "../Redux/Actions";
 
 const UpdateFeed = (props) => {
   const [updatePost, setUpdatePost] = useState({
@@ -45,7 +45,12 @@ const UpdateFeed = (props) => {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="danger">
+          <Button
+            variant="danger"
+            onClick={() => {
+              dispatch(deleteUpdateAsync(postId));
+            }}
+          >
             Delete
             {/* onClick={props.handleClose}  */}
           </Button>

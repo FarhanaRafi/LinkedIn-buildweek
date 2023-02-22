@@ -36,7 +36,7 @@ const SelectFeed = (props) => {
           <Col xs={12} md={6}>
             <Card body className="mt-4">
               <div className="d-flex">
-                <strong>{selectedPost.username}</strong>
+                <strong>{selectedPost ? selectedPost.username : ""}</strong>
                 <span className="ml-auto">
                   <Dropdown>
                     <Dropdown.Toggle variant="transparent">
@@ -58,7 +58,7 @@ const SelectFeed = (props) => {
                       >
                         <UpdateFeed handleClose={handleClose} />
                       </Modal>
-                      <Dropdown.Item href="#/action-2">
+                      <Dropdown.Item onClick={handleShow}>
                         <AiFillDelete className="mr-3" />
                         Delete Post
                       </Dropdown.Item>
@@ -67,7 +67,7 @@ const SelectFeed = (props) => {
                 </span>
               </div>
               <hr />
-              <div>{selectedPost.text}</div>
+              <div>{selectedPost ? selectedPost.text : ""}</div>
             </Card>
           </Col>
           <Col xs={12} md={3}>
