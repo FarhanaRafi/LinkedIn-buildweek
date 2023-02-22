@@ -40,7 +40,7 @@ const Sidebar = () => {
               width="16"
               height="16"
               fill="currentColor"
-              class="bi bi-question-circle-fill"
+              className="bi bi-question-circle-fill"
               viewBox="0 0 16 16"
               className="ml-auto"
             >
@@ -80,8 +80,10 @@ const Sidebar = () => {
         </Modal.Body>
 
         <Button
+
           variant="outline-primary rounded-pill"
           className=" mb-2 sidebar-top-button mx-auto"
+
         >
           Follow
         </Button>
@@ -111,9 +113,11 @@ const Sidebar = () => {
                 </div>
               </p>
 
+
               <Button
                 variant="outline-secondary rounded-pill "
                 className="sidebar-button mt-n3 d-flex ml-5"
+
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -129,7 +133,9 @@ const Sidebar = () => {
                     d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"
                   />
                 </svg>{" "}
+
                 <span className="ml-1 sidebar-connect">Connect</span>
+
               </Button>
 
               <hr className="mb-n3" />
@@ -161,18 +167,22 @@ const Sidebar = () => {
                   <p className="sidebar-title">{profile.title}</p>
                 </div>
               </p>
+
               <Button
                 variant="outline-secondary rounded-pill"
                 className="mt-n3 sidebar-button d-flex ml-5"
+
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
                   height="16"
                   fill="currentColor"
+
                   class="bi bi-person-plus-fill"
                   viewBox="0 0 16 16"
                   className="sidebar-svg"
+
                 >
                   <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
                   <path
@@ -180,7 +190,9 @@ const Sidebar = () => {
                     d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"
                   />
                 </svg>{" "}
+
                 <span className="ml-1 sidebar-connect">Connect</span>
+
               </Button>
 
               <hr className="mb-n3 " />
