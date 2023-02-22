@@ -67,11 +67,11 @@ const Sidebar = () => {
           </div>
           <p className="text-muted">Get the latest jobs and industry news</p>
           <p>
-            <img
+            {/* <img
               src={profiles[0].image}
               alt="profile pic"
               className="sidebar-company-logo-left mr-3"
-            />
+            /> */}
 
             <img
               src="https://images.unsplash.com/photo-1496200186974-4293800e2c20?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y29tcGFueSUyMGxvZ298ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"

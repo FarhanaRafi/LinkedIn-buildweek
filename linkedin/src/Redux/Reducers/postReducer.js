@@ -1,4 +1,4 @@
-import { GET_POSTS } from "../Actions";
+import { ADD_POST, GET_POSTS } from "../Actions";
 
 const initialState = {
   post: [],
@@ -10,6 +10,11 @@ const postReducer = (state = initialState, action) => {
       return {
         ...state,
         post: action.payload,
+      };
+    case ADD_POST:
+      return {
+        ...state,
+        post: [...state.post, action.payload],
       };
     // case PUT_EXPERIENCE:
     //   return {
