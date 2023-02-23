@@ -51,27 +51,28 @@ const Experience = () => {
                   <FiEdit2 />
                 </Link>
               </div>
-              {experienceFromRedux.map((exp) => {
-                return (
-                  <div>
-                    <span>
-                      <h6 className="ml-4">
-                        {"  "}
-                        <strong>{exp.role}</strong>
-                      </h6>
-                      <div className="ml-4 mt-n2">
-                        {exp.company}, {exp.area}
-                        <br />
-                        {format(new Date(exp.startDate), "LLL, yyyy")} -{" "}
-                        {format(new Date(exp.endDate), "LLL, yyyy")}
-                        <br />
-                        {exp.description}{" "}
-                      </div>
-                    </span>
-                    <hr />
-                  </div>
-                );
-              })}
+              {experienceFromRedux.length > 0 &&
+                experienceFromRedux.map((exp) => {
+                  return (
+                    <div>
+                      <span>
+                        <h6 className="ml-4">
+                          {"  "}
+                          <strong>{exp.role}</strong>
+                        </h6>
+                        <div className="ml-4 mt-n2">
+                          {exp.company}, {exp.area}
+                          <br />
+                          {format(new Date(exp.startDate), "LLL, yyyy")} -{" "}
+                          {format(new Date(exp.endDate), "LLL, yyyy")}
+                          <br />
+                          {exp.description}{" "}
+                        </div>
+                      </span>
+                      <hr />
+                    </div>
+                  );
+                })}
             </Card.Text>
           </Card.Body>
         </Card>
