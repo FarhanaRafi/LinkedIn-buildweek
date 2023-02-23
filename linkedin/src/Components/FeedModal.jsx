@@ -65,9 +65,9 @@ const FeedModal = (props) => {
               e.preventDefault();
               const formData = new FormData();
               formData.append("post", image);
-              dispatch(addPostAsync(props.handleClose, addPost));
+              //   dispatch(addPostAsync(props.handleClose, addPost));
               //   formData.push({ image: image });
-              dispatch(postImageAsync(formData, selectedPost));
+              dispatch(postImageAsync(formData, addPost));
             }}
           >
             Post

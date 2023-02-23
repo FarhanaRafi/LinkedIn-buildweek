@@ -316,34 +316,37 @@ export const addImageAsync = (data, userId) => {
   };
 };
 
-export const postImageAsync = (data, postId) => {
+export const postImageAsync = (form, post) => {
   let header = {
     method: "POST",
     headers: {
       Authorization:
         "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzNDZlNDgzODFmYzAwMTNmZmZhZDkiLCJpYXQiOjE2NzY4ODg0NzAsImV4cCI6MTY3ODA5ODA3MH0.AYIsvNXcD-Xnx3yf_2zgpkcNNyuB19GZwp9jMm6Y6Jc",
-      //   "Content-Type": "multipart/form-data",
-      "Content-Type": "application/octet-stream",
     },
   };
-  return async (dispatch, getState) => {
+
+  return async () => {
     try {
-      let res = await fetch(
-        `https://striveschool-api.herokuapp.com/api/posts/${postId}`,
-        { ...header, body: data }
+      let res1 = await fetch(
+        `https://striveschool-api.herokuapp.com/api/posts/`,
+        { ...getOptions("POST"), body: JSON.stringify(post) }
       );
 
-      if (res.ok) {
-        let postedImage = await res.json();
+      if (res1.ok) {
+        let addedPost = await res1.json();
 
-        console.log(postedImage);
-        // handleClose();
-        dispatch({
-          type: POST_IMAGE,
-          payload: postedImage,
-        });
-      } else {
-        console.log("error");
+        console.log("post posted", addedPost);
+        let postId = addedPost._id;
+
+        let res2 = await fetch(
+          `https://striveschool-api.herokuapp.com/api/posts/${postId}`,
+          { ...header, body: form }
+        );
+
+        if (res2.ok) {
+          let postedImage = await res2.json();
+          console.log("image posted", postedImage);
+        }
       }
     } catch (error) {
       console.log(error);
