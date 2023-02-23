@@ -11,6 +11,7 @@ export const UPDATE_POST = "UPDATE_POST";
 export const DELETE_POST = "DELETE_POST";
 export const ADD_IMAGE = "ADD_IMAGE";
 export const POST_IMAGE = "POST_IMAGE";
+export const POST_IMAGE_EXPERIENCE = "POST_IMAGE_EXPERIENCE";
 
 const getOptions = (method) => {
   return {
@@ -340,6 +341,44 @@ export const postImageAsync = (form, post) => {
 
         let res2 = await fetch(
           `https://striveschool-api.herokuapp.com/api/posts/${postId}`,
+          { ...header, body: form }
+        );
+
+        if (res2.ok) {
+          let postedImage = await res2.json();
+          console.log("image posted", postedImage);
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const postImageExperienceAsync = (form, post, userId) => {
+  let header = {
+    method: "POST",
+    headers: {
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzNDZlNDgzODFmYzAwMTNmZmZhZDkiLCJpYXQiOjE2NzY4ODg0NzAsImV4cCI6MTY3ODA5ODA3MH0.AYIsvNXcD-Xnx3yf_2zgpkcNNyuB19GZwp9jMm6Y6Jc",
+    },
+  };
+
+  return async () => {
+    try {
+      let res1 = await fetch(
+        `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences`,
+        { ...getOptions("POST"), body: JSON.stringify(post) }
+      );
+
+      if (res1.ok) {
+        let addedExperience = await res1.json();
+
+        console.log("post posted", addedExperience);
+        let expId = addedExperience._id;
+
+        let res2 = await fetch(
+          `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences/${expId}/picture`,
           { ...header, body: form }
         );
 
