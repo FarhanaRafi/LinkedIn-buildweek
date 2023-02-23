@@ -6,6 +6,10 @@ export const PUT_EXPERIENCE = "PUT_EXPERIENCE";
 export const DELETE_EXPERIENCE = "DELETE_EXPERIENCE";
 export const GET_POSTS = "GET_POSTS";
 export const ADD_POST = "ADD_POST";
+export const GET_SELECTED_POST = "GET_SELECTED_POST";
+export const UPDATE_POST = "UPDATE_POST";
+export const DELETE_POST = "DELETE_POST";
+export const ADD_IMAGE = "ADD_IMAGE";
 
 const getOptions = (method) => {
   return {
@@ -169,7 +173,9 @@ export const getPostAsync = () => {
         console.log(fetchedPost);
         dispatch({
           type: GET_POSTS,
-          payload: fetchedPost,
+          payload: fetchedPost.sort(
+            (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+          ),
         });
       } else {
         console.log("error");
@@ -196,6 +202,101 @@ export const addPostAsync = (handleClose, data) => {
         dispatch({
           type: ADD_POST,
           payload: addedPost,
+        });
+      } else {
+        console.log("error");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getSelectedPostAsync = (postId) => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await fetch(
+        `https://striveschool-api.herokuapp.com/api/posts/${postId}`,
+        getOptions("GET")
+      );
+
+      if (res.ok) {
+        let fetchedSelectedPost = await res.json();
+        console.log(fetchedSelectedPost);
+        dispatch({
+          type: GET_SELECTED_POST,
+          payload: fetchedSelectedPost,
+        });
+      } else {
+        console.log("error");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const updatePostAsync = (postId, data, handleClose) => {
+  return async (dispatch) => {
+    try {
+      let res = await fetch(
+        `https://striveschool-api.herokuapp.com/api/posts/${postId}`,
+        { ...getOptions("PUT"), body: JSON.stringify(data) }
+      );
+      if (res.ok) {
+        let fetchedUpdatePost = await res.json();
+        handleClose();
+        dispatch({
+          type: UPDATE_POST,
+          payload: fetchedUpdatePost,
+        });
+      } else {
+        alert("something went wrong updating");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const deleteUpdateAsync = (postId, handleClose) => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await fetch(
+        `https://striveschool-api.herokuapp.com/api/posts/${postId}`,
+        { ...getOptions("DELETE") }
+      );
+
+      if (res.ok) {
+        handleClose();
+        dispatch({
+          type: DELETE_POST,
+        });
+      } else {
+        console.log("error");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
+export const addImageAsync = (data, userId) => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await fetch(
+        `https://striveschool-api.herokuapp.com/api/profile/${userId}/picture`,
+        { ...getOptions("POST"), body: JSON.stringify(data) }
+      );
+
+      if (res.ok) {
+        let addedImage = await res.json();
+
+        console.log(addedImage);
+        // handleClose();
+        dispatch({
+          type: ADD_IMAGE,
+          payload: addedImage,
         });
       } else {
         console.log("error");

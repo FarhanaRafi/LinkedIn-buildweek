@@ -3,12 +3,16 @@ import { useEffect } from "react";
 import { Card, Form, Col, Row, Modal } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { getPostAsync } from "../Redux/Actions";
-import { BsPlusLg } from "react-icons/bs";
+import { BsPlusLg, BsCalendarDate } from "react-icons/bs";
 import { useState } from "react";
 import FeedModal from "./FeedModal";
+import { HiOutlinePhotograph } from "react-icons/hi";
+import { MdVideocam, MdOutlineArticle } from "react-icons/md";
+import { format } from "date-fns";
 
 const NewsFeed = () => {
   const posts = useSelector((state) => state.posts.post);
+  const id = useSelector((state) => state.profile.data);
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
 
@@ -29,32 +33,30 @@ const NewsFeed = () => {
   return (
     <>
       <div>
-        <Card body className="mt-3">
+        <Card body className="mt-4">
           <Form
             onSubmit={(e) => {
               e.preventDefault();
             }}
           >
-            <Form.Group as={Row}>
+            <Form.Group as={Row} className="d-flex">
               <Form.Label column sm="2">
-                Password
+                <img
+                  src={id.image}
+                  alt="logo"
+                  height={50}
+                  style={{ borderRadius: "50%" }}
+                />
               </Form.Label>
               <Col sm="10">
                 <Form.Control
                   type="text"
                   placeholder="Start a Post...."
                   onClick={handleShow}
-                  //   value={addPost.text}
-                  //   onChange={(e) =>
-                  //     setAddPost({
-                  //       ...addPost,
-                  //       text: e.target.value,
-                  //     })
-                  //   }
+                  className="rounded-pill ml-n4 mt-2"
                 />
 
                 <Modal
-                  // closeButton={}
                   show={show}
                   onHide={handleClose}
                   backdrop="static"
@@ -65,16 +67,53 @@ const NewsFeed = () => {
               </Col>
             </Form.Group>
           </Form>
+          <Col>
+            <span>
+              <HiOutlinePhotograph className="text-primary" /> Photos
+            </span>
+            <span className="ml-5">
+              <MdVideocam
+                className="text-success"
+                style={{ fontSize: "20px" }}
+              />{" "}
+              Video
+            </span>
+            <span className="ml-5">
+              <BsCalendarDate
+                className="text-danger"
+                style={{ fontSize: "20px" }}
+              />{" "}
+              Event
+            </span>
+            <span className="ml-5">
+              <MdOutlineArticle
+                className="text-danger"
+                style={{ fontSize: "20px" }}
+              />{" "}
+              Write article
+            </span>
+          </Col>
         </Card>
 
         {posts.map((post) => {
           return (
             <Card body className="mt-3">
-              {/* <img src={post.user.image} alt="img" /> */}
               <div className="d-flex ">
-                <p>
-                  <strong>{post.username}</strong>
-                </p>
+                <div>
+                  {post.user && (
+                    <img
+                  
+                      src={post.user.image}
+                      alt="profile"
+                      height={50}
+                      style={{ borderRadius: "50%" }}
+                    />
+                  )}
+                  <strong className="ml-3">{post.username}</strong>
+                  <p className=" text-muted mt-n3 create-date">
+                    {format(new Date(post.createdAt), "dd LLL, yyyy")}
+                  </p>
+                </div>
                 <span className="ml-auto text-primary ">
                   {" "}
                   <BsPlusLg />
