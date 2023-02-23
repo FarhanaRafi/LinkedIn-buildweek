@@ -282,11 +282,19 @@ export const deleteUpdateAsync = (postId, handleClose) => {
 };
 
 export const addImageAsync = (data, userId) => {
+  let header = {
+    method: "POST",
+    headers: {
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzNDZlNDgzODFmYzAwMTNmZmZhZDkiLCJpYXQiOjE2NzY4ODg0NzAsImV4cCI6MTY3ODA5ODA3MH0.AYIsvNXcD-Xnx3yf_2zgpkcNNyuB19GZwp9jMm6Y6Jc",
+      //   "Content-Type": "multipart/form-data",
+    },
+  };
   return async (dispatch, getState) => {
     try {
       let res = await fetch(
         `https://striveschool-api.herokuapp.com/api/profile/${userId}/picture`,
-        { ...getOptions("POST"), body: JSON.stringify(data) }
+        { ...header, body: data }
       );
 
       if (res.ok) {

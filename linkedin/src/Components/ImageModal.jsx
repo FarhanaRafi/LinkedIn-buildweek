@@ -6,16 +6,16 @@ import { addImageAsync } from "../Redux/Actions";
 
 function ImageModal() {
   const dispatch = useDispatch();
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState([]);
   const formData = new FormData();
   const userId = useSelector((state) => state.profile.data._id);
 
   const addImageEventHandler = (event) => {
+    event.preventDefault();
     setImage(event.target.files[0]);
     console.log(image, "files");
     if (image !== 0) {
-      formData.append("picture", image.name);
-      dispatch(addImageAsync(formData, userId));
+      // dispatch(addImageAsync(formData, userId));
     }
     // formData.append(dispatch(addImageAsync(image)));
     console.log(formData, "formData");
@@ -29,10 +29,11 @@ function ImageModal() {
         </Modal.Header>
         <Modal.Body>
           <Form
-            onSubmit={(e) => {
-              e.preventDefault();
-              dispatch(addImageAsync(image));
-            }}
+          // onSubmit={(e) => {
+          //   e.preventDefault();
+          //   formData.append("profile", image);
+          //   dispatch(addImageAsync(image));
+          // }}
           >
             <Form.Group>
               <Form.Control
@@ -57,12 +58,11 @@ function ImageModal() {
           </Button>
           <Button
             variant="primary"
-            // onClick={(e) => addImageEventHandler(e)}
-            //   (e) => {
-            //   e.preventDefault();
-            //   formData()
-            //   dispatch(addImageAsync(image));
-            // }}
+            onClick={(e) => {
+              e.preventDefault();
+              formData.append("profile", image);
+              dispatch(addImageAsync(formData, userId));
+            }}
           >
             Upload
           </Button>
