@@ -53,7 +53,7 @@ const ExperiencePage = () => {
             <Card className="mt-3 mb-5">
               <Card.Body style={{ height: "100%" }}>
                 <Card.Text>
-                  <div className="mb-3 d-flex  mr-auto">
+                  <div className="mb-3 d-flex">
                     <h5>Experience</h5>
                     <span className="ml-auto">
                       <BsPlusLg onClick={handleShow} />
@@ -77,6 +77,7 @@ const ExperiencePage = () => {
                       <div>
                         <span>
                           <div className="ml-4 d-flex">
+                            <img src={exp.image} alt="exp" height={50} />
                             {"  "}
                             <strong>{exp.role}</strong>
 
@@ -90,7 +91,9 @@ const ExperiencePage = () => {
                               />
                             </div>
                           </div>
-                          <div className="ml-4 mt-n2">
+                          <div
+                            style={{ marginLeft: "95px", marginTop: "-32px" }}
+                          >
                             {exp.company}, {exp.area}
                             <br />
                             {format(

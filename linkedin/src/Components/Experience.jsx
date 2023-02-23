@@ -66,7 +66,7 @@ const Experience = () => {
                       </p>
                       <div
                         className=" "
-                        style={{ marginLeft: "60px", marginTop: "-45px" }}
+                        style={{ marginLeft: "90px", marginTop: "-45px" }}
                       >
                         {/* <span style={{ marginTop: "-30px" }}> */}
                         {exp.company}, {exp.area}
