@@ -10,6 +10,7 @@ import { FiMoreHorizontal, FiEdit2 } from "react-icons/fi";
 import { AiFillDelete } from "react-icons/ai";
 import UpdateFeed from "./UpdateFeed";
 import { useState } from "react";
+import { format } from "date-fns";
 
 const SelectFeed = (props) => {
   let selectedPost = useSelector((state) => state.selectedPost.selected);
@@ -34,7 +35,7 @@ const SelectFeed = (props) => {
             <FeedLeft />
           </Col>
           <Col xs={12} md={6}>
-            <Card body className="mt-4">
+            <Card body className="mt-4 mb-4">
               <div className="d-flex">
                 <strong>{selectedPost ? selectedPost.username : ""}</strong>
                 <span className="ml-auto">
@@ -69,8 +70,24 @@ const SelectFeed = (props) => {
                   </Dropdown>
                 </span>
               </div>
+              <span className="text-muted mt-n2">
+                {selectedPost
+                  ? format(new Date(selectedPost.createdAt), "dd LLL, yyyy")
+                  : ""}
+              </span>
               <hr />
               <div>{selectedPost ? selectedPost.text : ""}</div>
+              {selectedPost ? (
+                <img
+                  src={selectedPost.image}
+                  alt="post"
+                  style={{ width: "100%" }}
+                  height={250}
+                  className="mt-3"
+                />
+              ) : (
+                ""
+              )}
             </Card>
           </Col>
           <Col xs={12} md={3}>
