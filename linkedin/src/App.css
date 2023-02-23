@@ -61,3 +61,14 @@
 .create-date{
   margin-left: 68px;
 }
+
+.bs-tooltip-auto[x-placement^=bottom] .arrow::before,
+.bs-tooltip-bottom .arrow::before {
+  border-bottom-color: #fff;
+  /* Red */
+}
+
+.popover{
+  width:180px;
+  height:40px;    
+}

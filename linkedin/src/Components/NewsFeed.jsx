@@ -1,19 +1,30 @@
 import React from "react";
 import { useEffect } from "react";
-import { Card, Form, Col, Row, Modal } from "react-bootstrap";
+import {
+  Card,
+  Form,
+  Col,
+  Row,
+  Modal,
+  OverlayTrigger,
+  Tooltip,
+  Popover,
+} from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { getPostAsync } from "../Redux/Actions";
 import { BsPlusLg, BsCalendarDate } from "react-icons/bs";
 import { useState } from "react";
 import FeedModal from "./FeedModal";
-import { HiOutlinePhotograph } from "react-icons/hi";
+import { HiOutlinePhotograph, HiOutlineLightBulb } from "react-icons/hi";
 import { MdVideocam, MdOutlineArticle } from "react-icons/md";
+import { FaHandsWash } from "react-icons/fa";
 import { format } from "date-fns";
 import { SlLike } from "react-icons/sl";
 import { FaRegCommentDots } from "react-icons/fa";
 import { BiRepost } from "react-icons/bi";
 import { RiSendPlaneFill } from "react-icons/ri";
-import { AiFillLike } from "react-icons/ai";
+import { AiFillLike, AiFillHeart } from "react-icons/ai";
+import { FiSmile } from "react-icons/fi";
 
 const NewsFeed = () => {
   const posts = useSelector((state) => state.posts.post);
@@ -22,9 +33,19 @@ const NewsFeed = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  //   const [addPost, setAddPost] = useState({
-  //     text: "",
-  //   });
+
+  const popoverHoverFocus = (
+    <Popover id="popover-trigger-hover-focus">
+      <AiFillLike className="text-primary ml-2" style={{ fontSize: "26px" }} />
+      <FiSmile className="text-warning ml-2" style={{ fontSize: "26px" }} />
+      <FaHandsWash className="text-success ml-2" style={{ fontSize: "26px" }} />
+      <AiFillHeart className="text-danger ml-2" style={{ fontSize: "26px" }} />
+      <HiOutlineLightBulb
+        className="text-warning ml-2"
+        style={{ fontSize: "26px" }}
+      />
+    </Popover>
+  );
 
   useEffect(() => {
     dispatch(getPostAsync());
@@ -152,9 +173,18 @@ const NewsFeed = () => {
                 </span>
               </div>
               <hr />
-              <span className="mr-5">
+              <OverlayTrigger
+                key="top"
+                placement="top"
+                overlay={popoverHoverFocus}
+              >
+                <span className="mr-5">
+                  <SlLike className="mr-2" /> Like
+                </span>
+              </OverlayTrigger>
+              {/* <span className="mr-5">
                 <SlLike className="mr-2" /> Like
-              </span>
+              </span> */}
               <span className="mr-5">
                 <FaRegCommentDots className="mr-2" /> Comment
               </span>
