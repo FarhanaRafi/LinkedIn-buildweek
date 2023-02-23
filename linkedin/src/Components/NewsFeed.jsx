@@ -33,13 +33,13 @@ const NewsFeed = () => {
   return (
     <>
       <div>
-        <Card body className="mt-3">
+        <Card body className="mt-4">
           <Form
             onSubmit={(e) => {
               e.preventDefault();
             }}
           >
-            <Form.Group as={Row}>
+            <Form.Group as={Row} className="d-flex">
               <Form.Label column sm="2">
                 <img
                   src={id.image}
@@ -53,7 +53,7 @@ const NewsFeed = () => {
                   type="text"
                   placeholder="Start a Post...."
                   onClick={handleShow}
-                  className="rounded-pill ml-n4"
+                  className="rounded-pill ml-n4 mt-2"
                 />
 
                 <Modal
@@ -102,6 +102,7 @@ const NewsFeed = () => {
                 <div>
                   {post.user && (
                     <img
+                  
                       src={post.user.image}
                       alt="profile"
                       height={50}

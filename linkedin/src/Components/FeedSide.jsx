@@ -7,7 +7,7 @@ const FeedSide = () => {
   return (
     <>
       {" "}
-      <Modal.Dialog className="mt-5 ">
+      <Modal.Dialog className="mt-4">
         <Modal.Body>
           <p className="d-flex">
             <span className="mr-3">Edit public profile & URL</span>
