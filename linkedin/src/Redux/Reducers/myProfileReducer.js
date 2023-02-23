@@ -14,7 +14,7 @@ const myProfileReducer = (state = initialState, action) => {
     case ADD_IMAGE:
       return {
         ...state,
-        // data: action.payload,
+        data: action.payload,
       };
     default:
       return state;
