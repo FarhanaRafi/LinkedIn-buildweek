@@ -162,6 +162,14 @@ const EditExperienceModal = (props) => {
                 Appears below your name at the top of the profile
               </Form.Text>
             </Form.Group>
+            {/* <Form.Group>
+              <Form.Control
+                type="file"
+                rows={4}
+                placeholder="What do you want to talk about"
+                onChange={(e) => addImageHandler(e)}
+              />
+            </Form.Group> */}
 
             <div className="d-flex justify-content-between">
               <Button
@@ -176,9 +184,6 @@ const EditExperienceModal = (props) => {
               <Button
                 variant="primary"
                 onClick={() => {
-                  console.log(
-                    `user id: ${userId}, exp id: ${experienceId}, exp obj: ${experienceObj}`
-                  );
                   dispatch(
                     putExperiencesAsync(userId, experienceId, experienceObj)
                   );

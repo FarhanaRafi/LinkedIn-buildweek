@@ -4,7 +4,7 @@ import { BsPlusLg } from "react-icons/bs";
 import { FiEdit2 } from "react-icons/fi";
 import ExperienceModal from "./ExperienceModal";
 import { Link } from "react-router-dom";
-import { Modal } from "react-bootstrap";
+import { Modal, Row, Col } from "react-bootstrap";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
@@ -51,28 +51,37 @@ const Experience = () => {
                   <FiEdit2 />
                 </Link>
               </div>
-              {experienceFromRedux.length > 0 &&
-                experienceFromRedux.map((exp) => {
-                  return (
-                    <div>
-                      <span>
+
+              {experienceFromRedux.map((exp) => {
+                return (
+                  <div>
+                    <span>
+                      <p className="d-flex">
+                        <img src={exp.image} alt="experience" height={50} />
+
                         <h6 className="ml-4">
                           {"  "}
                           <strong>{exp.role}</strong>
                         </h6>
-                        <div className="ml-4 mt-n2">
-                          {exp.company}, {exp.area}
-                          <br />
-                          {format(new Date(exp.startDate), "LLL, yyyy")} -{" "}
-                          {format(new Date(exp.endDate), "LLL, yyyy")}
-                          <br />
-                          {exp.description}{" "}
-                        </div>
-                      </span>
-                      <hr />
-                    </div>
-                  );
-                })}
+                      </p>
+                      <div
+                        className=" "
+                        style={{ marginLeft: "60px", marginTop: "-45px" }}
+                      >
+                        {/* <span style={{ marginTop: "-30px" }}> */}
+                        {exp.company}, {exp.area}
+                        {/* </span> */}
+                        <br />
+                        {format(new Date(exp.startDate), "LLL, yyyy")} -{" "}
+                        {format(new Date(exp.endDate), "LLL, yyyy")}
+                        <br />
+                        {exp.description}{" "}
+                      </div>
+                    </span>
+                    <hr />
+                  </div>
+                );
+              })}
             </Card.Text>
           </Card.Body>
         </Card>

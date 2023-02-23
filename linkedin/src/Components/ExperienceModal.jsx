@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { addExperienceAsync, editExperienceAsync } from "../Redux/Actions";
+import {
+  addExperienceAsync,
+  editExperienceAsync,
+  postImageExperienceAsync,
+} from "../Redux/Actions";
 
 const ExperienceModal = ({ handleClose, edit, experience }) => {
   const [experienceObj, setExperienceObj] = useState({
@@ -9,19 +13,19 @@ const ExperienceModal = ({ handleClose, edit, experience }) => {
     company: edit ? experience?.company : "",
     startDate: "",
     endDate: "",
-    area: edit ? experience?.area: "",
+    area: edit ? experience?.area : "",
   });
+  const [image, setImage] = useState(null);
 
   const dispatch = useDispatch();
   const profile = useSelector((state) => state.profile.data);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    /*if (edit) {
-      dispatch(editExperienceAsync(profile._id, experienceObj, handleClose));
-    } else {
-      dispatch(addExperienceAsync(profile._id, experienceObj, handleClose));
-    }*/
+  };
+  const addImageHandler = (e) => {
+    e.preventDefault();
+    setImage(e.target.files[0]);
   };
 
   return (
@@ -160,14 +164,29 @@ const ExperienceModal = ({ handleClose, edit, experience }) => {
                 Appears below your name at the top of the profile
               </Form.Text>
             </Form.Group>
+            <Form.Group>
+              <Form.Control
+                type="file"
+                rows={4}
+                placeholder="What do you want to talk about"
+                onChange={(e) => addImageHandler(e)}
+              />
+            </Form.Group>
 
-
-            <Button variant="primary" type="submit" onClick={()=>{
-              dispatch(addExperienceAsync(profile._id, experienceObj, handleClose));
-            }}>
+            <Button
+              variant="primary"
+              type="submit"
+              onClick={(e) => {
+                e.preventDefault();
+                const formData = new FormData();
+                formData.append("experience", image);
+                dispatch(
+                  postImageExperienceAsync(formData, experienceObj, profile._id)
+                );
+              }}
+            >
               Save
             </Button>
-
           </Form>
         </div>
       </Modal.Body>
