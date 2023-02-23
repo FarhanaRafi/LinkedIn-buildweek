@@ -15,7 +15,6 @@ const NewsFeed = () => {
   const id = useSelector((state) => state.profile.data);
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   //   const [addPost, setAddPost] = useState({
@@ -44,7 +43,7 @@ const NewsFeed = () => {
                 <img
                   src={id.image}
                   alt="logo"
-                  height={50}
+                  height={40}
                   style={{ borderRadius: "50%" }}
                 />
               </Form.Label>
@@ -68,9 +67,17 @@ const NewsFeed = () => {
             </Form.Group>
           </Form>
           <Col>
-            <span>
+            <span onClick={handleShow}>
               <HiOutlinePhotograph className="text-primary" /> Photos
             </span>
+            <Modal
+              show={show}
+              onHide={handleClose}
+              backdrop="static"
+              keyboard={false}
+            >
+              <FeedModal handleClose={handleClose} />
+            </Modal>
             <span className="ml-5">
               <MdVideocam
                 className="text-success"
@@ -102,7 +109,6 @@ const NewsFeed = () => {
                 <div>
                   {post.user && (
                     <img
-                  
                       src={post.user.image}
                       alt="profile"
                       height={50}
