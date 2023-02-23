@@ -77,7 +77,7 @@ const ExperiencePage = () => {
                       <div>
                         <span>
                           <div className="ml-4 d-flex">
-                            <img src={exp.image} alt="exp" height={40} />
+                            <img src={exp.image} alt="exp" height={50} />
                             {"  "}
                             <strong>{exp.role}</strong>
 
@@ -91,7 +91,9 @@ const ExperiencePage = () => {
                               />
                             </div>
                           </div>
-                          <div className="ml-4 mt-n2">
+                          <div
+                            style={{ marginLeft: "95px", marginTop: "-32px" }}
+                          >
                             {exp.company}, {exp.area}
                             <br />
                             {format(

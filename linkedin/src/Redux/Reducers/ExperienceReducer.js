@@ -14,7 +14,7 @@ const experienceReducer = (state = initialState, action) => {
     case GET_EXPERIENCES:
       return {
         ...state,
-        experiences: action.payload,
+        experiences: action.payload.slice(-(action.payload.length - 5)),
       };
     case PUT_EXPERIENCE:
       return {

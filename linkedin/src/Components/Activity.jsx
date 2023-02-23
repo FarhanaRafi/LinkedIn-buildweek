@@ -1,9 +1,10 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 // import { FiEdit2 } from "react-icons/fi";
 import { Link, useParams } from "react-router-dom";
 // import { format } from "date-fns";
 import { useSelector } from "react-redux";
+import { format } from "date-fns";
 
 const Activity = () => {
   const activityFromRedux = useSelector((state) => state.posts.post);
@@ -16,9 +17,19 @@ const Activity = () => {
         <Card className="mt-3 mb-4">
           <Card.Body style={{ height: "100%" }}>
             <Card.Text>
-              <div className="mb-3 d-flex  mr-auto">
+              <div className=" d-flex  mr-auto">
                 <h5>Activity</h5>
+
+                <Button
+                  variant="outline-primary"
+                  className="ml-auto rounded-pill"
+                >
+                  Start a Post
+                </Button>
               </div>
+              <span className="text-primary mt-n4 mb-5">100 Connections</span>
+              <br />
+              <span className="text-muted">Farhana posted 2 days ago</span>
               {/* activityFromRedux.username  "Farhana Rafi"  */}
               {activityFromRedux.map((post) => {
                 return (
@@ -26,12 +37,30 @@ const Activity = () => {
                     {post.username.includes("Farhana Rafi") ? (
                       <>
                         <span>
-                          <Link to={"/feed/" + post._id} className="act">
-                            <div className="ml-4 mt-n2 activity">
-                              {post.text}
-                              <br />
-                            </div>
-                          </Link>
+                          <div>
+                            <Link
+                              to={"/feed/" + post._id}
+                              className="act d-flex"
+                            >
+                              <img
+                                src={post.image}
+                                alt="post"
+                                height={100}
+                                width={100}
+                                className="mt-3"
+                              />
+                              <div className="ml-4 mt-3 activity">
+                                {post.text}
+                                <br />
+                                <span className="text-muted">
+                                  {format(
+                                    new Date(post.createdAt),
+                                    "dd LLL, yyyy"
+                                  )}
+                                </span>
+                              </div>
+                            </Link>
+                          </div>
                         </span>
                         <hr />
                       </>
