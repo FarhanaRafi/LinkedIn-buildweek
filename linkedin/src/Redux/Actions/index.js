@@ -10,6 +10,7 @@ export const GET_SELECTED_POST = "GET_SELECTED_POST";
 export const UPDATE_POST = "UPDATE_POST";
 export const DELETE_POST = "DELETE_POST";
 export const ADD_IMAGE = "ADD_IMAGE";
+export const POST_IMAGE = "POST_IMAGE";
 
 const getOptions = (method) => {
   return {
@@ -282,11 +283,19 @@ export const deleteUpdateAsync = (postId, handleClose) => {
 };
 
 export const addImageAsync = (data, userId) => {
+  let header = {
+    method: "POST",
+    headers: {
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzNDZlNDgzODFmYzAwMTNmZmZhZDkiLCJpYXQiOjE2NzY4ODg0NzAsImV4cCI6MTY3ODA5ODA3MH0.AYIsvNXcD-Xnx3yf_2zgpkcNNyuB19GZwp9jMm6Y6Jc",
+      //   "Content-Type": "multipart/form-data",
+    },
+  };
   return async (dispatch, getState) => {
     try {
       let res = await fetch(
         `https://striveschool-api.herokuapp.com/api/profile/${userId}/picture`,
-        { ...getOptions("POST"), body: JSON.stringify(data) }
+        { ...header, body: data }
       );
 
       if (res.ok) {
@@ -300,6 +309,44 @@ export const addImageAsync = (data, userId) => {
         });
       } else {
         console.log("error");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const postImageAsync = (form, post) => {
+  let header = {
+    method: "POST",
+    headers: {
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzNDZlNDgzODFmYzAwMTNmZmZhZDkiLCJpYXQiOjE2NzY4ODg0NzAsImV4cCI6MTY3ODA5ODA3MH0.AYIsvNXcD-Xnx3yf_2zgpkcNNyuB19GZwp9jMm6Y6Jc",
+    },
+  };
+
+  return async () => {
+    try {
+      let res1 = await fetch(
+        `https://striveschool-api.herokuapp.com/api/posts/`,
+        { ...getOptions("POST"), body: JSON.stringify(post) }
+      );
+
+      if (res1.ok) {
+        let addedPost = await res1.json();
+
+        console.log("post posted", addedPost);
+        let postId = addedPost._id;
+
+        let res2 = await fetch(
+          `https://striveschool-api.herokuapp.com/api/posts/${postId}`,
+          { ...header, body: form }
+        );
+
+        if (res2.ok) {
+          let postedImage = await res2.json();
+          console.log("image posted", postedImage);
+        }
       }
     } catch (error) {
       console.log(error);

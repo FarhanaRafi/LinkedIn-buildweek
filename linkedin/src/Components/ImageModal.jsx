@@ -6,17 +6,17 @@ import { addImageAsync } from "../Redux/Actions";
 
 function ImageModal() {
   const dispatch = useDispatch();
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState([]);
   const formData = new FormData();
   const userId = useSelector((state) => state.profile.data._id);
 
   const addImageEventHandler = (event) => {
+    event.preventDefault();
     setImage(event.target.files[0]);
     console.log(image, "files");
-    if (image !== 0) {
-      formData.append("picture", image.name);
-      dispatch(addImageAsync(formData, userId));
-    }
+    // if (image !== 0) {
+    //   // dispatch(addImageAsync(formData, userId));
+    // }
     // formData.append(dispatch(addImageAsync(image)));
     console.log(formData, "formData");
   };
@@ -28,24 +28,13 @@ function ImageModal() {
           <Modal.Title>Create a Post</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form
-            onSubmit={(e) => {
-              e.preventDefault();
-              dispatch(addImageAsync(image));
-            }}
-          >
+          <Form>
             <Form.Group>
               <Form.Control
                 type="file"
                 rows={4}
-                placeholder="What do you want to talk about"
-                //value={addPost.text}
+                // placeholder="What do you want to talk about"
                 onChange={(e) => addImageEventHandler(e)}
-                // (e) =>
-                // setImage({
-                //   ...image,
-                //   image: e.target.files[0],
-                // })
               />
               {console.log(image, "imgsdfghj")}
             </Form.Group>
@@ -57,12 +46,11 @@ function ImageModal() {
           </Button>
           <Button
             variant="primary"
-            // onClick={(e) => addImageEventHandler(e)}
-            //   (e) => {
-            //   e.preventDefault();
-            //   formData()
-            //   dispatch(addImageAsync(image));
-            // }}
+            onClick={(e) => {
+              e.preventDefault();
+              formData.append("profile", image);
+              dispatch(addImageAsync(formData, userId));
+            }}
           >
             Upload
           </Button>
