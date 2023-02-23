@@ -9,6 +9,7 @@ export const ADD_POST = "ADD_POST";
 export const GET_SELECTED_POST = "GET_SELECTED_POST";
 export const UPDATE_POST = "UPDATE_POST";
 export const DELETE_POST = "DELETE_POST";
+export const ADD_IMAGE = "ADD_IMAGE"
 
 const getOptions = (method) => {
   return {
@@ -276,6 +277,35 @@ export const deleteUpdateAsync = (postId, handleClose) => {
       }
     } catch (err) {
       console.log(err);
+    }
+  };
+};
+
+
+
+
+export const addImageAsync = (handleClose, data, userId) => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await fetch(
+        `https://striveschool-api.herokuapp.com/api/profile/${userId}/picture`,
+        { ...getOptions("POST"), body: JSON.stringify(data) }
+      );
+
+      if (res.ok) {
+        let addedImage = await res.json();
+
+        console.log(addedImage);
+        handleClose();
+        dispatch({
+          type: ADD_IMAGE,
+          payload: addedImage,
+        });
+      } else {
+        console.log("error");
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 };
