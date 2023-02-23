@@ -9,6 +9,11 @@ import FeedModal from "./FeedModal";
 import { HiOutlinePhotograph } from "react-icons/hi";
 import { MdVideocam, MdOutlineArticle } from "react-icons/md";
 import { format } from "date-fns";
+import { SlLike } from "react-icons/sl";
+import { FaRegCommentDots } from "react-icons/fa";
+import { BiRepost } from "react-icons/bi";
+import { RiSendPlaneFill } from "react-icons/ri";
+import { AiFillLike } from "react-icons/ai";
 
 const NewsFeed = () => {
   const posts = useSelector((state) => state.posts.post);
@@ -137,6 +142,28 @@ const NewsFeed = () => {
                   style={{ width: "100%", marginTop: "10px" }}
                 />
               </p>
+              <div className="d-flex">
+                <span className="text-muted">
+                  <AiFillLike className="text-primary" />
+                  <small className="ml-2">Marius and 230 others</small>
+                </span>
+                <span className="ml-auto text-muted">
+                  170 Comments. 34 Repost
+                </span>
+              </div>
+              <hr />
+              <span className="mr-5">
+                <SlLike className="mr-2" /> Like
+              </span>
+              <span className="mr-5">
+                <FaRegCommentDots className="mr-2" /> Comment
+              </span>
+              <span className="mr-5">
+                <BiRepost className="mr-2" /> Repost
+              </span>
+              <span className="mr-5">
+                <RiSendPlaneFill className="mr-2" /> Send
+              </span>
             </Card>
           );
         })}
