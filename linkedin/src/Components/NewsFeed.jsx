@@ -129,6 +129,9 @@ const NewsFeed = () => {
               <hr />
 
               {post.text}
+              <p>
+                <img src={post.image} alt="post" height={90} />
+              </p>
             </Card>
           );
         })}
