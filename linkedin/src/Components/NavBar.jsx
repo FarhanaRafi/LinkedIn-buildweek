@@ -23,33 +23,35 @@ const NavBar = () => {
           <a href="/">
             <BsLinkedin className="in-icon linkedin-icon" />
           </a>
-          <InputGroup className="mb-3 search-bar-container">
-            <BiSearchAlt2 />
-            <Form.Control
-              className="search-bar"
-              placeholder="Search"
-              aria-label="search"
-              aria-describedby="basic-addon2"
-              onChange={(e) => {
-                setSearchWord(e.target.value.toLowerCase());
-              }}
-            />
-          </InputGroup>
-          <div className="absolute mt-1 w-full p2 bg-white shadow-lg rounded-bl rounded-br max-h-36 overflow-y-auto">
-            {searchWord !== "" &&
-              profilesList.map((person, index) => {
-                return (
-                  (person.name.toLowerCase().includes(searchWord) ||
-                    person.surname.toLowerCase().includes(searchWord)) && (
-                    <div
-                      key={index}
-                      className="cursor-pointer hover:bg-black hover:bg-opacity-10 p-2"
-                    >
-                      {person.name}, {person.surname}
-                    </div>
-                  )
-                );
-              })}
+          <div className="search">
+            <InputGroup className="mb-3 search-bar-container">
+              <BiSearchAlt2 />
+              <Form.Control
+                className="search-bar"
+                placeholder="Search"
+                aria-label="search"
+                aria-describedby="basic-addon2"
+                onChange={(e) => {
+                  setSearchWord(e.target.value.toLowerCase());
+                }}
+              />
+            </InputGroup>
+            <div className="absolute mt-1 w-full p2 bg-white shadow-lg rounded-bl rounded-br max-h-36 overflow-y-auto search-results">
+              {searchWord !== "" &&
+                profilesList.map((person, index) => {
+                  return (
+                    (person.name.toLowerCase().includes(searchWord) ||
+                      person.surname.toLowerCase().includes(searchWord)) && (
+                      <div
+                        key={index}
+                        className="cursor-pointer hover:bg-black hover:bg-opacity-10 p-2"
+                      >
+                        {person.name}, {person.surname}
+                      </div>
+                    )
+                  );
+                })}
+            </div>
           </div>
         </div>
         <div className="icon-link-section">

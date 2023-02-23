@@ -51,6 +51,7 @@ const Experience = () => {
                   <FiEdit2 />
                 </Link>
               </div>
+
               {experienceFromRedux.map((exp) => {
                 return (
                   <div>

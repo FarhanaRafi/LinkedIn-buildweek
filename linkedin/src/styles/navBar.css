@@ -1,15 +1,15 @@
 .nav-bar-container-container {
   width: 100%;
 
+  position: sticky;
+  top: 0;
+  z-index: 1;
   background-color: white;
 }
 
 .nav-bar-container {
   display: flex;
   max-width: 70rem;
-  position: sticky;
-  top: 0;
-  z-index: 1;
   margin-inline: auto;
 }
 
@@ -39,6 +39,12 @@
   font-size: 1rem;
   border: none;
   background-color: #eef3f8;
+}
+
+.search-results {
+  position: absolute;
+  max-height: 30rem;
+  overflow: auto;
 }
 
 .icon-link-section {
