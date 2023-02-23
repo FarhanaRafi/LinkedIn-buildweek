@@ -9,7 +9,7 @@ export const ADD_POST = "ADD_POST";
 export const GET_SELECTED_POST = "GET_SELECTED_POST";
 export const UPDATE_POST = "UPDATE_POST";
 export const DELETE_POST = "DELETE_POST";
-export const ADD_IMAGE = "ADD_IMAGE"
+export const ADD_IMAGE = "ADD_IMAGE";
 
 const getOptions = (method) => {
   return {
@@ -281,10 +281,7 @@ export const deleteUpdateAsync = (postId, handleClose) => {
   };
 };
 
-
-
-
-export const addImageAsync = (handleClose, data, userId) => {
+export const addImageAsync = (data, userId) => {
   return async (dispatch, getState) => {
     try {
       let res = await fetch(
@@ -296,7 +293,7 @@ export const addImageAsync = (handleClose, data, userId) => {
         let addedImage = await res.json();
 
         console.log(addedImage);
-        handleClose();
+        // handleClose();
         dispatch({
           type: ADD_IMAGE,
           payload: addedImage,

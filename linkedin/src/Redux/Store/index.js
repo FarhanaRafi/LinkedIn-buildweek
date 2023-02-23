@@ -26,7 +26,7 @@ const bigReducer = combineReducers({
   experience: experienceReducer,
   posts: postReducer,
   selectedPost: selectedPostReducer,
-  image: imageReducer,
+  // image: imageReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, bigReducer);

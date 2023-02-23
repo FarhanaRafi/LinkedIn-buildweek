@@ -13,16 +13,10 @@ const Main = () => {
   const myData = useSelector((state) => state.profile.data);
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
-  const [image, setImage] = useState("")
-  
+  // const [image, setImage] = useState("")
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-  const addImageEventHandler = (event) => {
-
-   setImage(event.target.files[0])
-  }
 
   console.log(myData);
 
