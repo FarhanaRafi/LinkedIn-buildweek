@@ -129,6 +129,14 @@ const NewsFeed = () => {
               <hr />
 
               {post.text}
+              <p>
+                <img
+                  src={post.image}
+                  alt="post"
+                  height={250}
+                  style={{ width: "100%", marginTop: "10px" }}
+                />
+              </p>
             </Card>
           );
         })}

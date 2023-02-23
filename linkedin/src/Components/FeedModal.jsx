@@ -3,29 +3,20 @@ import { Modal, Button, Form } from "react-bootstrap";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addPostAsync, postImageAsync } from "../Redux/Actions";
+import { useEffect } from "react";
 
 const FeedModal = (props) => {
   const [addPost, setAddPost] = useState({
     text: "",
   });
   const dispatch = useDispatch();
-  const [image, setImage] = useState([]);
-  const formData = new FormData();
-  let selectedPost = useSelector((state) => state.selectedPost.selected);
+  const [image, setImage] = useState(null);
+  let selectedPost = useSelector((state) => state.profile.data._id);
 
   const addImageHandler = (e) => {
     e.preventDefault();
-    console.log(image, "post image");
-    // setImage.push(...addPost, picture: e.target.files[0])
-    // setImage((addPost) => {
-    //   return { ...addPost, picture: e.target.files[0] };
-    // });
     setImage(e.target.files[0]);
-    // setImage({ ...addPost, picture: e.target.files[0] });
   };
-  //   var newInput = Object.assign({},
-
-  //   const imageElement
 
   return (
     <>
@@ -35,10 +26,10 @@ const FeedModal = (props) => {
         </Modal.Header>
         <Modal.Body>
           <Form
-            onSubmit={(e) => {
-              e.preventDefault();
-              dispatch(addPostAsync(props.handleClose, addPost));
-            }}
+          // onSubmit={(e) => {
+          //   e.preventDefault();
+          //   dispatch(addPostAsync(props.handleClose, addPost));
+          // }}
           >
             <Form.Group>
               <Form.Control
@@ -60,13 +51,6 @@ const FeedModal = (props) => {
                 rows={4}
                 placeholder="What do you want to talk about"
                 onChange={(e) => addImageHandler(e)}
-                // value={addPost.text}
-                // onChange={(e) =>
-                //   setAddPost({
-                //     ...addPost,
-                //     text: e.target.value,
-                //   })
-                // }
               />
             </Form.Group>
           </Form>
@@ -79,10 +63,11 @@ const FeedModal = (props) => {
             variant="primary"
             onClick={(e) => {
               e.preventDefault();
+              const formData = new FormData();
               formData.append("post", image);
-              dispatch(addPostAsync(props.handleClose, addPost));
-              formData.push({ image: image });
-              dispatch(postImageAsync(formData, selectedPost));
+              //   dispatch(addPostAsync(props.handleClose, addPost));
+              //   formData.push({ image: image });
+              dispatch(postImageAsync(formData, addPost));
             }}
           >
             Post
