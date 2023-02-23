@@ -14,9 +14,9 @@ function ImageModal() {
     event.preventDefault();
     setImage(event.target.files[0]);
     console.log(image, "files");
-    if (image !== 0) {
-      // dispatch(addImageAsync(formData, userId));
-    }
+    // if (image !== 0) {
+    //   // dispatch(addImageAsync(formData, userId));
+    // }
     // formData.append(dispatch(addImageAsync(image)));
     console.log(formData, "formData");
   };
@@ -28,25 +28,13 @@ function ImageModal() {
           <Modal.Title>Create a Post</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form
-          // onSubmit={(e) => {
-          //   e.preventDefault();
-          //   formData.append("profile", image);
-          //   dispatch(addImageAsync(image));
-          // }}
-          >
+          <Form>
             <Form.Group>
               <Form.Control
                 type="file"
                 rows={4}
-                placeholder="What do you want to talk about"
-                //value={addPost.text}
+                // placeholder="What do you want to talk about"
                 onChange={(e) => addImageEventHandler(e)}
-                // (e) =>
-                // setImage({
-                //   ...image,
-                //   image: e.target.files[0],
-                // })
               />
               {console.log(image, "imgsdfghj")}
             </Form.Group>
