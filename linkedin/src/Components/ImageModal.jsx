@@ -9,6 +9,10 @@ function ImageModal() {
   const [image, setImage] = useState([]);
   const formData = new FormData();
   const userId = useSelector((state) => state.profile.data._id);
+  const [show, setShow] = useState(false);
+  // const [image, setImage] = useState("")
+
+  const handleClose = () => setShow(false);
 
   const addImageEventHandler = (event) => {
     event.preventDefault();
@@ -39,6 +43,7 @@ function ImageModal() {
               {console.log(image, "imgsdfghj")}
             </Form.Group>
           </Form>
+          
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" /*onClick={props.handleClose}*/>
@@ -48,6 +53,7 @@ function ImageModal() {
             variant="primary"
             onClick={(e) => {
               e.preventDefault();
+              handleClose()
               formData.append("profile", image);
               dispatch(addImageAsync(formData, userId));
             }}

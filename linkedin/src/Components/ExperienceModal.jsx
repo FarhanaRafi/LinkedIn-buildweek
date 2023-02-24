@@ -178,6 +178,7 @@ const ExperienceModal = ({ handleClose, edit, experience }) => {
               type="submit"
               onClick={(e) => {
                 e.preventDefault();
+                handleClose()
                 const formData = new FormData();
                 formData.append("experience", image);
                 dispatch(

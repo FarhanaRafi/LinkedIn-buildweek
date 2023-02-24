@@ -77,9 +77,9 @@ const ExperiencePage = () => {
                       <div>
                         <span>
                           <div className="ml-4 d-flex">
-                            <img src={exp.image} alt="exp" height={50} />
-                            {"  "}
-                            <strong>{exp.role}</strong>
+                          {exp.image ? <img src={exp.image} alt="experience" height={50} /> : <img src="https://media.licdn.com/dms/image/C4E0BAQGkKVG44U3liA/company-logo_100_100/0/1672360094978?e=2147483647&v=beta&t=BUmxTtDsVFxlBrMkBEPJQqWkanFQeVBKrHNEzIei9YU" alt="ghost logo" height={50}/>}
+
+                            <strong className="ml-4">{exp.role}</strong>
 
                             <div className="ml-auto">
                               <FiEdit2

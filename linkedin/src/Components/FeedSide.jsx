@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 
 const FeedSide = () => {
   const profiles = useSelector((state) => state.profiles.profiles);
+  const myData = useSelector((state) => state.profile.data);
   return (
     <>
       {" "}
@@ -59,7 +60,7 @@ const FeedSide = () => {
           <p className="text-muted">Get the latest jobs and industry news</p>
           <p>
             <img
-              src={profiles[0].image}
+              src={myData.image}
               alt="profile pic"
               className="sidebar-company-logo-left mr-3"
             />

@@ -44,7 +44,7 @@ const Main = () => {
           backdrop="static"
           keyboard={false}
         >
-          <ImageModal />
+          <ImageModal handleClose={handleClose}/>
         </Modal>
         <Card.Body style={{ height: "39vh" }}>
           <Card.Text>

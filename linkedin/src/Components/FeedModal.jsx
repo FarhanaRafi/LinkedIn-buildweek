@@ -63,6 +63,7 @@ const FeedModal = (props) => {
             variant="primary"
             onClick={(e) => {
               e.preventDefault();
+              props.handleClose()
               const formData = new FormData();
               formData.append("post", image);
               //   dispatch(addPostAsync(props.handleClose, addPost));

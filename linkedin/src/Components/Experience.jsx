@@ -19,13 +19,15 @@ const Experience = () => {
   const experienceFromRedux = useSelector(
     (state) => state.experience.experiences
   );
+
+  
   console.log(experienceFromRedux, "exp");
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getExperiencesAsync(id._id));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [experienceFromRedux]);
 
   return (
     <>
@@ -57,7 +59,7 @@ const Experience = () => {
                   <div>
                     <span>
                       <p className="d-flex">
-                        <img src={exp.image} alt="experience" height={50} />
+                      {exp.image ? <img src={exp.image} alt="experience" height={50} /> : <img src="https://media.licdn.com/dms/image/C4E0BAQGkKVG44U3liA/company-logo_100_100/0/1672360094978?e=2147483647&v=beta&t=BUmxTtDsVFxlBrMkBEPJQqWkanFQeVBKrHNEzIei9YU" alt="ghost logo" height={50}/>}
 
                         <h6 className="ml-4">
                           {"  "}
