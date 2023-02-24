@@ -31,7 +31,7 @@ function Messaging() {
       </Form.Group>
       </Form>
             
-        {posts.slice(0, 3).map((post) => {
+        {posts.slice(0, 2).map((post) => {
           return (
             <Card body className="mt-3 mb-3">
               <div className="d-flex">
