@@ -6,6 +6,10 @@ import localStorage from "redux-persist/lib/storage";
 import myProfileReducer from "../Reducers/myProfileReducer";
 import profilesReducer from "../Reducers/profilesReducer";
 import experienceReducer from "../Reducers/ExperienceReducer";
+import postReducer from "../Reducers/postReducer";
+import selectedPostReducer from "../Reducers/selectedPostReducer";
+import likeReducer from "../Reducers/likeReducer";
+//import imageReducer from "../Reducers/ImageReducer";
 
 const persistConfig = {
   key: "root",
@@ -21,6 +25,9 @@ const bigReducer = combineReducers({
   profile: myProfileReducer,
   profiles: profilesReducer,
   experience: experienceReducer,
+  posts: postReducer,
+  selectedPost: selectedPostReducer,
+  like: likeReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, bigReducer);

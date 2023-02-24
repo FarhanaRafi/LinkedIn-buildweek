@@ -1,15 +1,22 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getMyProfileAsync } from "../Redux/Actions";
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, Modal } from "react-bootstrap";
 import Detail from "./Detail";
 import Resource from "./Resource";
 import Education from "./Education";
 import Experience from "./Experience";
+import Activity from "./Activity";
+import ImageModal from "./ImageModal";
 
 const Main = () => {
   const myData = useSelector((state) => state.profile.data);
   const dispatch = useDispatch();
+  const [show, setShow] = useState(false);
+  // const [image, setImage] = useState("")
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   console.log(myData);
 
@@ -26,11 +33,20 @@ const Main = () => {
           style={{ height: "30vh" }}
         />
         <Card.Img
+          onClick={handleShow}
           src={myData.image}
           className="ml-3 mt-n5"
           style={{ borderRadius: "50%", height: "90px", width: "90px" }}
         />
-        <Card.Body style={{ height: "39vh" }}>
+        <Modal
+          show={show}
+          onHide={handleClose}
+          backdrop="static"
+          keyboard={false}
+        >
+          <ImageModal handleClose={handleClose} />
+        </Modal>
+        <Card.Body style={{ height: "100%" }}>
           <Card.Text>
             <h5>
               <strong>
@@ -63,6 +79,7 @@ const Main = () => {
       <Resource />
       <Education />
       <Experience />
+      <Activity />
     </>
   );
 };

@@ -1,4 +1,9 @@
-import { GET_EXPERIENCES } from "../Actions";
+import {
+  DELETE_EXPERIENCE,
+  GET_EXPERIENCES,
+  POST_IMAGE_EXPERIENCE,
+  PUT_EXPERIENCE,
+} from "../Actions";
 
 const initialState = {
   experiences: [],
@@ -9,8 +14,22 @@ const experienceReducer = (state = initialState, action) => {
     case GET_EXPERIENCES:
       return {
         ...state,
-        experiences: action.payload,
+        experiences: action.payload.slice(-(action.payload.length - 5)),
       };
+    case PUT_EXPERIENCE:
+      return {
+        ...state,
+      };
+    case DELETE_EXPERIENCE:
+      return {
+        ...state,
+      };
+    case POST_IMAGE_EXPERIENCE:
+      return {
+        ...state,
+        experiences: [...state.experiences, action.payload],
+      };
+
     default:
       return state;
   }

@@ -1,16 +1,17 @@
 .nav-bar-container-container {
   width: 100%;
 
+  position: sticky;
+  top: 0;
+  z-index: 2;
   background-color: white;
 }
 
 .nav-bar-container {
   display: flex;
   max-width: 70rem;
-  position: sticky;
-  top: 0;
-  z-index: 1;
   margin-inline: auto;
+  z-index: 2;
 }
 
 .in-icon.linkedin-icon {
@@ -18,6 +19,7 @@
   color: rgb(10, 102, 194);
   margin-right: 0.5rem;
   margin-top: 10px;
+  margin-left: 10px;
 }
 
 .search-bar-container {
@@ -39,6 +41,12 @@
   font-size: 1rem;
   border: none;
   background-color: #eef3f8;
+}
+
+.search-results {
+  position: absolute;
+  max-height: 30rem;
+  overflow: auto;
 }
 
 .icon-link-section {
@@ -125,4 +133,111 @@
   text-align: center;
   text-decoration: underline;
   color: #5d3b09;
+}
+
+.nav-bar-second-line {
+  max-width: 70rem;
+  margin-inline: auto;
+  height: 4rem;
+  font-size: 0.9rem;
+}
+
+.profile-info-left img {
+  height: 2.3rem;
+  border-radius: 50%;
+  margin-inline: 10px 20px;
+}
+
+.profile-info-left p {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.buttons-nav-bar-right button {
+  margin-left: 10px;
+  border-radius: 50px;
+  font-size: 1rem;
+  padding: 5px 15px;
+  font-weight: bold;
+}
+
+.one-button {
+  background-color: white;
+  border: 1px solid rgb(74, 74, 74);
+  color: rgb(74, 74, 74);
+}
+
+.two-button {
+  background-color: white;
+  border: 1px solid rgb(10, 102, 194);
+  color: rgb(10, 102, 194);
+}
+
+.three-button {
+  color: white;
+  background-color: rgb(10, 102, 194);
+  margin-right: 10px;
+}
+
+.nav-bar-second-line-container {
+  width: 100%;
+  border-top: 1px solid rgba(128, 128, 128, 0.222);
+  box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.218);
+  position: absolute;
+  top: -80px;
+  background-color: white;
+  transition-duration: 1.5s;
+  z-index: 1;
+}
+
+.nav-bar-second-line-container.active {
+  top: 60px;
+}
+
+.navbar-modal {
+  height: 80vh;
+}
+.navbar-div {
+  margin-left: auto;
+}
+.navbar-modal-top {
+  margin-left: auto;
+}
+
+.modal-open .modal .modal-dialog {
+  position: absolute;
+  right: 0;
+}
+
+.compartment-modal {
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border: 1px solid rgba(128, 128, 128, 0.2);
+  border-radius: 10px;
+}
+
+.text-footer {
+  border-top: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+.visit-more {
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+  padding-bottom: 10px;
+}
+
+.icon-modal {
+  font-size: 2.5rem;
+  margin-right: 1rem;
+  border: 1px solid rgba(128, 128, 128, 0.2);
+  padding: 5px;
+  color: rgb(0, 113, 233);
+}
+
+.icons-modal {
+  margin-right: -15px;
+}
+
+.main-modal-text h4 {
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+  padding-bottom: 15px;
 }

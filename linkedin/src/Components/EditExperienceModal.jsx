@@ -1,43 +1,38 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import {
-  addExperienceAsync,
-  editExperienceAsync,
-  postImageExperienceAsync,
+  putExperiencesAsync,
+  deleteExperienceAsync,
+  getExperiencesAsync,
 } from "../Redux/Actions";
 
-const ExperienceModal = ({ handleClose, edit, experience }) => {
-  const [experienceObj, setExperienceObj] = useState({
-    role: edit ? experience?.role : "",
-    company: edit ? experience?.company : "",
-    startDate: "",
-    endDate: "",
-    area: edit ? experience?.area : "",
-  });
-  const [image, setImage] = useState(null);
-
+const EditExperienceModal = (props) => {
+  const experienceId = props.expId;
+  const userId = useSelector((state) => state.profile.data._id);
+  // const updateExperience = useSelector((state) => state.experience.experiences);
   const dispatch = useDispatch();
-  const profile = useSelector((state) => state.profile.data);
+  const [experienceObj, setExperienceObj] = useState(props.exp);
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-  };
-  const addImageHandler = (e) => {
-    e.preventDefault();
-    setImage(e.target.files[0]);
-  };
-
+  useEffect(() => {
+    dispatch(getExperiencesAsync(userId));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <>
       <Modal.Header closeButton>
-        <Modal.Title>{edit ? "Edit" : "Add"} experience</Modal.Title>
+        <Modal.Title>Edit experience</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <div className="notify-section"></div>
         <div className="form">
           <p>* Indicates required</p>
-          <Form onSubmit={submitHandler}>
+          <Form
+            onSubmit={(e) => {
+              e.preventDefault();
+            }}
+          >
             <Form.Group className="mb-3 text-muted" controlId="title">
               <Form.Label>Title*</Form.Label>
               <Form.Control
@@ -84,6 +79,7 @@ const ExperienceModal = ({ handleClose, edit, experience }) => {
                 value={experienceObj.area}
                 type="text"
                 placeholder="Ex: London, United Kingdom"
+                required
                 onChange={(e) =>
                   setExperienceObj({
                     ...experienceObj,
@@ -103,6 +99,7 @@ const ExperienceModal = ({ handleClose, edit, experience }) => {
               <Form.Label>Start date* </Form.Label>
               <div>
                 <Form.Control
+                  value={experienceObj.startDate}
                   type="date"
                   placeholder=""
                   required
@@ -121,7 +118,6 @@ const ExperienceModal = ({ handleClose, edit, experience }) => {
                 <Form.Control
                   type="date"
                   placeholder=""
-                  required
                   onChange={(e) =>
                     setExperienceObj({
                       ...experienceObj,
@@ -145,8 +141,10 @@ const ExperienceModal = ({ handleClose, edit, experience }) => {
             <Form.Group className="mb-3 text-muted" controlId="description">
               <Form.Label>Description</Form.Label>
               <Form.Control
+                value={experienceObj.description}
                 type="text"
                 placeholder=""
+                required
                 onChange={(e) =>
                   setExperienceObj({
                     ...experienceObj,
@@ -164,30 +162,37 @@ const ExperienceModal = ({ handleClose, edit, experience }) => {
                 Appears below your name at the top of the profile
               </Form.Text>
             </Form.Group>
-            <Form.Group>
+            {/* <Form.Group>
               <Form.Control
                 type="file"
                 rows={4}
                 placeholder="What do you want to talk about"
                 onChange={(e) => addImageHandler(e)}
               />
-            </Form.Group>
+            </Form.Group> */}
 
-            <Button
-              variant="primary"
-              type="submit"
-              onClick={(e) => {
-                e.preventDefault();
-                handleClose()
-                const formData = new FormData();
-                formData.append("experience", image);
-                dispatch(
-                  postImageExperienceAsync(formData, experienceObj, profile._id)
-                );
-              }}
-            >
-              Save
-            </Button>
+            <div className="d-flex justify-content-between">
+              <Button
+                variant="danger"
+                onClick={() => {
+                  dispatch(deleteExperienceAsync(userId, experienceId));
+                  props.handleClose();
+                }}
+              >
+                Delete
+              </Button>
+              <Button
+                variant="primary"
+                onClick={() => {
+                  dispatch(
+                    putExperiencesAsync(userId, experienceId, experienceObj)
+                  );
+                  props.handleClose();
+                }}
+              >
+                Save
+              </Button>
+            </div>
           </Form>
         </div>
       </Modal.Body>
@@ -203,4 +208,4 @@ const ExperienceModal = ({ handleClose, edit, experience }) => {
   );
 };
 
-export default ExperienceModal;
+export default EditExperienceModal;

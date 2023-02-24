@@ -48,3 +48,36 @@
   max-height: 90vh;
   overflow: auto;
 }
+
+.activity{
+  color: #282c34;
+  text-decoration: none;
+}
+
+.act:hover{
+  text-decoration: none;
+}
+
+.create-date{
+  margin-left: 68px;
+}
+
+.bs-tooltip-auto[x-placement^=bottom] .arrow::before,
+.bs-tooltip-bottom .arrow::before {
+  border-bottom-color: #fff;
+  /* Red */
+}
+
+.popover{
+  width:180px;
+  height:40px;    
+}
+.sticky-side{
+  position: sticky;
+  top:150px
+}
+
+.sticky-side1{
+  position: sticky;
+  top: 150px;
+}
