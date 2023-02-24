@@ -132,3 +132,14 @@
   text-decoration: underline;
   color: #5d3b09;
 }
+
+.nav-bar-second-line {
+  background-color: bisque;
+  max-width: 70rem;
+  margin-inline: auto;
+}
+
+.profile-info-left img {
+  height: 2.1rem;
+  border-radius: 50%;
+}
