@@ -6,7 +6,7 @@ const Education = () => {
     <>
       <div>
         <Card className="mt-3">
-          <Card.Body style={{ height: "73vh" }}>
+          <Card.Body style={{ height: "100%" }}>
             <Card.Text>
               <h5 className="mb-3">
                 <strong>Education</strong>
