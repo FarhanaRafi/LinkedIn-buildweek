@@ -1,0 +1,13 @@
+.messaging-container{
+  margin-left: 101em;
+  height: 5em;
+  width: 20em
+}
+.messagingBase{
+  line-height: 2em;
+}
+
+.messaging-content{
+  height: 20vh;
+  margin-bottom:20vh
+}
