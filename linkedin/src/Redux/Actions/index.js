@@ -13,6 +13,7 @@ export const ADD_IMAGE = "ADD_IMAGE";
 export const POST_IMAGE = "POST_IMAGE";
 export const POST_IMAGE_EXPERIENCE = "POST_IMAGE_EXPERIENCE";
 
+
 const getOptions = (method) => {
   return {
     method: method,
@@ -392,3 +393,5 @@ export const postImageExperienceAsync = (form, post, userId) => {
     }
   };
 };
+
+

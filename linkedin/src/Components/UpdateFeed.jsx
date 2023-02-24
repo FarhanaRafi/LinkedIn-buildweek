@@ -57,6 +57,7 @@ const UpdateFeed = (props) => {
           <Button
             variant="danger"
             onClick={() => {
+              props.handleClose()
               dispatch(deleteUpdateAsync(postId, props.handleClose));
               navigate(`/feed`);
             }}
@@ -68,6 +69,7 @@ const UpdateFeed = (props) => {
             variant="primary"
             onClick={(e) => {
               e.preventDefault();
+              props.handleClose()
               dispatch(updatePostAsync(postId, updatePost, props.handleClose));
               navigate(`/feed`);
             }}

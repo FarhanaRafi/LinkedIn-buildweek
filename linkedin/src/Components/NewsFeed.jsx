@@ -7,7 +7,7 @@ import {
   Row,
   Modal,
   OverlayTrigger,
-  Tooltip,
+  //Tooltip,
   Popover,
 } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
@@ -33,6 +33,9 @@ const NewsFeed = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+ const [like, setLike] = useState(false)
+
+
 
   const popoverHoverFocus = (
     <Popover id="popover-trigger-hover-focus">
@@ -128,9 +131,11 @@ const NewsFeed = () => {
           </Col>
         </Card>
 
-        {posts.map((post) => {
+        {posts
+        .slice(0, 15)
+        .map((post) => {
           return (
-            <Card body className="mt-3">
+            <Card body className="mt-3 mb-3">
               <div className="d-flex ">
                 <div>
                   {post.user && (
@@ -156,12 +161,14 @@ const NewsFeed = () => {
 
               {post.text}
               <p>
-                <img
+                {post.image ? <img 
                   src={post.image}
                   alt="post"
                   height={250}
                   style={{ width: "100%", marginTop: "10px" }}
-                />
+                /> : ""
+               }
+
               </p>
               <div className="d-flex">
                 <span className="text-muted">
@@ -179,7 +186,9 @@ const NewsFeed = () => {
                 overlay={popoverHoverFocus}
               >
                 <span className="mr-5">
-                  <SlLike className="mr-2" /> Like
+                  {like ?  <SlLike className="mr-2" color="blue" onClick={()=> setLike(false)}/> :  <SlLike className="mr-2" onClick={()=> setLike(true)}/>}
+                
+                Like
                 </span>
               </OverlayTrigger>
               {/* <span className="mr-5">

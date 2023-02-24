@@ -5,12 +5,12 @@ import { Link, useParams } from "react-router-dom";
 // import { format } from "date-fns";
 import { useSelector } from "react-redux";
 import { format } from "date-fns";
+import NewsFeed from "./NewsFeed";
 
 const Activity = () => {
   const activityFromRedux = useSelector((state) => state.posts.post);
   const params = useParams();
   console.log(params, "sdfghjcvbn");
-
   return (
     <>
       <div>
@@ -19,13 +19,12 @@ const Activity = () => {
             <Card.Text>
               <div className=" d-flex  mr-auto">
                 <h5>Activity</h5>
-
-                <Button
+                <Link
+                  to="/feed" className="btn btn-outline-primary ml-auto rounded-pill"
                   variant="outline-primary"
-                  className="ml-auto rounded-pill"
                 >
                   Start a Post
-                </Button>
+                </Link>
               </div>
               <span className="text-primary mt-n4 mb-5">100 Connections</span>
               <br />
@@ -42,13 +41,13 @@ const Activity = () => {
                               to={"/feed/" + post._id}
                               className="act d-flex"
                             >
-                              <img
+                             {post.image && <img
                                 src={post.image}
                                 alt="post"
                                 height={100}
                                 width={100}
                                 className="mt-3"
-                              />
+                              />}
                               <div className="ml-4 mt-3 activity">
                                 {post.text}
                                 <br />

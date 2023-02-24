@@ -5,6 +5,7 @@ import "../styles/Sidebar.css";
 
 const Sidebar = () => {
   const profiles = useSelector((state) => state.profiles.profiles);
+  const myData = useSelector((state) => state.profile.data);
   const [numberOfProfiles, setNumberOfProfiles] = useState(445);
   const showMoreProfiles = () => {
     if (numberOfProfiles === 445) {
@@ -15,8 +16,11 @@ const Sidebar = () => {
   };
   return (
     <>
+
+
       <Modal.Dialog className="mt-5">
         <Modal.Body>
+          
           <p className="d-flex">
             <span className="mr-3">Edit public profile & URL</span>
 
@@ -46,9 +50,10 @@ const Sidebar = () => {
               <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z" />
             </svg>
           </p>
+       
         </Modal.Body>
       </Modal.Dialog>
-
+   
       <Modal.Dialog className="d-flex text-center">
         <Modal.Body className="sidebar-modal">
           <div className="d-flex">
@@ -67,11 +72,11 @@ const Sidebar = () => {
           </div>
           <p className="text-muted">Get the latest jobs and industry news</p>
           <p>
-            {/* <img
-              src={profiles[0].image}
+             <img
+              src={myData.image}
               alt="profile pic"
               className="sidebar-company-logo-left mr-3"
-            /> */}
+            /> 
 
             <img
               src="https://images.unsplash.com/photo-1496200186974-4293800e2c20?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y29tcGFueSUyMGxvZ298ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
@@ -99,7 +104,7 @@ const Sidebar = () => {
           </Modal.Title>
         </Modal.Header>
 
-        {profiles.slice(452, 455).map((profile) => {
+        {profiles.slice(453, 456).map((profile) => {
           return (
             <Modal.Body>
               <p className="d-flex">
