@@ -72,3 +72,12 @@
   width:180px;
   height:40px;    
 }
+.sticky-side{
+  position: sticky;
+  top:100px
+}
+
+.sticky-side1{
+  position: sticky;
+  top: 80px;
+}
