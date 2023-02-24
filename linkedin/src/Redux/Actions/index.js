@@ -12,7 +12,8 @@ export const DELETE_POST = "DELETE_POST";
 export const ADD_IMAGE = "ADD_IMAGE";
 export const POST_IMAGE = "POST_IMAGE";
 export const POST_IMAGE_EXPERIENCE = "POST_IMAGE_EXPERIENCE";
-
+export const ADD_TO_FAVORITES = "ADD_TO_FAVORITES";
+export const REMOVE_FROM_FAVORITE = "REMOVE_FROM_FAVORITE";
 
 const getOptions = (method) => {
   return {
@@ -394,4 +395,16 @@ export const postImageExperienceAsync = (form, post, userId) => {
   };
 };
 
+export const addToLikesAction = (like) => {
+  return {
+    type: ADD_TO_FAVORITES,
+    payload: like,
+  };
+};
 
+export const removeFromLikesAction = (i) => {
+  return {
+    type: REMOVE_FROM_FAVORITE,
+    payload: i,
+  };
+};
