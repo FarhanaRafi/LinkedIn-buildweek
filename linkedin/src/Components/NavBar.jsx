@@ -4,9 +4,13 @@ import {
   BsPeopleFill,
   BsBriefcaseFill,
   BsBellFill,
+  BsFillBagDashFill,
 } from "react-icons/bs";
+import { AiFillPlaySquare, AiFillCompass } from "react-icons/ai";
+import { FcBarChart, FcAdvertising } from "react-icons/fc";
 import { BiMessageRoundedDots, BiSearchAlt2 } from "react-icons/bi";
 import { TbGridDots } from "react-icons/tb";
+import { MdStickyNote2, MdGroups } from "react-icons/md";
 import {
   Button,
   Dropdown,
@@ -152,21 +156,58 @@ const NavBar = () => {
             Work
           </Button>
           <div className="navbar-div d-flex ">
-          <Modal show={show} onHide={handleClose} className="navbar-modal-top">
-       
-            <Modal.Header closeButton  className="navbar-modal">
-              <Modal.Title>Modal heading</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              Woohoo, you're reading this text in a modal!
-            </Modal.Body>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={handleClose}>
-                Close
-              </Button>
-            </Modal.Footer>
-    
-          </Modal>
+            <Modal
+              show={show}
+              onHide={handleClose}
+              className="navbar-modal-top"
+            >
+              <Modal.Header closeButton className="navbar-modal">
+                <Modal.Title>Work</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <div className="compartment-modal">
+                  <p className="visit-more">Visit More LinkedIn Products</p>
+                  <div className="icons-modal">
+                    <AiFillPlaySquare className="icon-modal" />
+                    <FcBarChart className="icon-modal" />
+                    <BsFillBagDashFill className="icon-modal" />
+                    <FcAdvertising className="icon-modal" />
+                    <MdStickyNote2 className="icon-modal" />
+                    <AiFillCompass className="icon-modal" />
+                    <MdGroups className="icon-modal" />
+                  </div>
+                </div>
+                <div className="main-modal-text compartment-modal">
+                  <h4>LinkedIn Business Services</h4>
+                  <p>
+                    <strong>Talent Solutions</strong>
+                    <br /> Find, attract and recruit talent
+                  </p>
+                  <p>
+                    <strong>Sales Solutions</strong>
+                    <br /> Unlock sales opportunities
+                  </p>
+                  <p>
+                    <strong>Post a job for free</strong>
+                    <br /> Get your job in front of quality candidates
+                  </p>
+                  <p>
+                    <strong>Marketing Solutions</strong>
+                    <br /> Acquire customers and grow your business
+                  </p>
+                  <p>
+                    <strong>Learning Solutions</strong>
+                    <br /> Develop talent across your organization
+                  </p>
+                  <p className="text-footer">Create a Company Page</p>
+                </div>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                  Close
+                </Button>
+              </Modal.Footer>
+            </Modal>
           </div>
           <a className="premium-link" href="/">
             Try Premium for free
