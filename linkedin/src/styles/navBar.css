@@ -194,14 +194,17 @@
   top: 60px;
 }
 
-.navbar-modal{
+.navbar-modal {
   height: 80vh;
-
 }
-.navbar-div{
+.navbar-div {
   margin-left: auto;
 }
-.navbar-modal-top{
+.navbar-modal-top {
   margin-left: auto;
 }
 
+.modal-open .modal .modal-dialog {
+  position: absolute;
+  right: 0;
+}
