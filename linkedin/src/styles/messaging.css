@@ -1,20 +1,19 @@
-.messaging-container{
+.messaging-container {
   margin-left: auto;
   height: 5em;
 
-  width: 25%
-
+  width: 25%;
 }
-.messagingBase{
+.messagingBase {
   line-height: 2em;
 }
 
-.messaging-content{
+.messaging-content {
   height: 20vh;
-  margin-bottom:20vh
+  margin-bottom: 20vh;
 }
 
-.popover-height{
+.popover-height {
   height: 80vh;
-  width: 50vh
+  width: 50vh;
 }
