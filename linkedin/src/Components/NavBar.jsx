@@ -7,7 +7,14 @@ import {
 } from "react-icons/bs";
 import { BiMessageRoundedDots, BiSearchAlt2 } from "react-icons/bi";
 import { TbGridDots } from "react-icons/tb";
-import { Dropdown, Form, InputGroup } from "react-bootstrap";
+import {
+  Button,
+  Dropdown,
+  Form,
+  InputGroup,
+  Modal,
+  ModalBody,
+} from "react-bootstrap";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -25,6 +32,10 @@ const NavBar = () => {
       setNavbar(false);
     }
   };
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   window.addEventListener("scroll", changeNavbar);
 
@@ -136,10 +147,27 @@ const NavBar = () => {
           </Dropdown>
         </div>
         <div className="right-nav-section">
-          <a href="/" className="links">
+          <Button variant="transparent" onClick={handleShow}>
             <TbGridDots />
             Work
-          </a>
+          </Button>
+          <div className="navbar-div d-flex ">
+          <Modal show={show} onHide={handleClose} className="navbar-modal-top">
+       
+            <Modal.Header closeButton  className="navbar-modal">
+              <Modal.Title>Modal heading</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              Woohoo, you're reading this text in a modal!
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Close
+              </Button>
+            </Modal.Footer>
+    
+          </Modal>
+          </div>
           <a className="premium-link" href="/">
             Try Premium for free
           </a>

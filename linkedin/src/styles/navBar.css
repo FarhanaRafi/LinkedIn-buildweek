@@ -193,3 +193,15 @@
 .nav-bar-second-line-container.active {
   top: 60px;
 }
+
+.navbar-modal{
+  height: 80vh;
+
+}
+.navbar-div{
+  margin-left: auto;
+}
+.navbar-modal-top{
+  margin-left: auto;
+}
+
