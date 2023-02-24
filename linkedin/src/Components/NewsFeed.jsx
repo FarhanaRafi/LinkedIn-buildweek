@@ -11,7 +11,11 @@ import {
   Popover,
 } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { getPostAsync } from "../Redux/Actions";
+import {
+  addToLikesAction,
+  getPostAsync,
+  removeFromLikesAction,
+} from "../Redux/Actions";
 import { BsPlusLg, BsCalendarDate } from "react-icons/bs";
 import { useState } from "react";
 import FeedModal from "./FeedModal";
@@ -34,6 +38,8 @@ const NewsFeed = () => {
   const handleShow = () => setShow(true);
   const [like, setLike] = useState(false);
 
+  const likedPosts = useSelector((state) => state.like.content);
+
   const popoverHoverFocus = (
     <Popover id="popover-trigger-hover-focus">
       <AiFillLike className="text-primary ml-2" style={{ fontSize: "26px" }} />
@@ -46,6 +52,8 @@ const NewsFeed = () => {
       />
     </Popover>
   );
+
+  const isLiked = (id) => likedPosts.includes(id);
 
   useEffect(() => {
     dispatch(getPostAsync());
@@ -182,33 +190,48 @@ const NewsFeed = () => {
                 placement="top"
                 overlay={popoverHoverFocus}
               >
-                <span className="mr-5">
-                  {like ? (
+                {isLiked(post._id) ? (
+                  <span className="mr-5">
                     <AiFillLike
                       className="mr-2"
                       color="blue"
-                      onClick={() => setLike(false)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        console.log("unlike", post);
+
+                        dispatch(removeFromLikesAction(post._id));
+                        // setLike(false)
+                      }}
                     />
-                  ) : (
+                    Unlike
+                  </span>
+                ) : (
+                  <span className="mr-4">
                     <AiFillLike
                       className="mr-2"
-                      onClick={() => setLike(true)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        console.log("like", post);
+
+                        dispatch(addToLikesAction(post._id));
+                        // setLike(false)
+                      }}
                     />
-                  )}
-                  Like
-                </span>
+                    Like
+                  </span>
+                )}
               </OverlayTrigger>
               {/* <span className="mr-5">
                 <SlLike className="mr-2" /> Like
               </span> */}
               <span className="mr-5">
-                <FaRegCommentDots className="mr-2" /> Comment
+                <FaRegCommentDots className="mr-1" /> Comment
               </span>
               <span className="mr-5">
-                <BiRepost className="mr-2" /> Repost
+                <BiRepost className="mr-1" /> Repost
               </span>
               <span className="mr-5">
-                <RiSendPlaneFill className="mr-2" /> Send
+                <RiSendPlaneFill className="mr-1" /> Send
               </span>
             </Card>
           );
