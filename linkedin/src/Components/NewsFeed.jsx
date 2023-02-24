@@ -33,9 +33,7 @@ const NewsFeed = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
- const [like, setLike] = useState(false)
-
-
+  const [like, setLike] = useState(false);
 
   const popoverHoverFocus = (
     <Popover id="popover-trigger-hover-focus">
@@ -131,9 +129,7 @@ const NewsFeed = () => {
           </Col>
         </Card>
 
-        {posts
-        .slice(0, 15)
-        .map((post) => {
+        {posts.slice(0, 15).map((post) => {
           return (
             <Card body className="mt-3 mb-3">
               <div className="d-flex ">
@@ -161,14 +157,16 @@ const NewsFeed = () => {
 
               {post.text}
               <p>
-                {post.image ? <img 
-                  src={post.image}
-                  alt="post"
-                  height={250}
-                  style={{ width: "100%", marginTop: "10px" }}
-                /> : ""
-               }
-
+                {post.image ? (
+                  <img
+                    src={post.image}
+                    alt="post"
+                    height={250}
+                    style={{ width: "100%", marginTop: "10px" }}
+                  />
+                ) : (
+                  ""
+                )}
               </p>
               <div className="d-flex">
                 <span className="text-muted">
@@ -186,9 +184,19 @@ const NewsFeed = () => {
                 overlay={popoverHoverFocus}
               >
                 <span className="mr-5">
-                  {like ?  <SlLike className="mr-2" color="blue" onClick={()=> setLike(false)}/> :  <SlLike className="mr-2" onClick={()=> setLike(true)}/>}
-                
-                Like
+                  {like ? (
+                    <AiFillLike
+                      className="mr-2"
+                      color="blue"
+                      onClick={() => setLike(false)}
+                    />
+                  ) : (
+                    <AiFillLike
+                      className="mr-2"
+                      onClick={() => setLike(true)}
+                    />
+                  )}
+                  Like
                 </span>
               </OverlayTrigger>
               {/* <span className="mr-5">
