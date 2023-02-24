@@ -11,9 +11,11 @@ import { AiFillDelete } from "react-icons/ai";
 import UpdateFeed from "./UpdateFeed";
 import { useState } from "react";
 import { format } from "date-fns";
+import "../styles/selectfeed.css"
 
 const SelectFeed = (props) => {
   let selectedPost = useSelector((state) => state.selectedPost.selected);
+  const myData = useSelector((state) => state.profile.data);
   const { id } = useParams();
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
@@ -29,7 +31,7 @@ const SelectFeed = (props) => {
   console.log(selectedPost, "selected");
   return (
     <>
-      <Container>
+      <Container className="selectfeed-footer-bottom">
         <Row>
           <Col xs={12} md={3}>
             <FeedLeft />
@@ -37,7 +39,20 @@ const SelectFeed = (props) => {
           <Col xs={12} md={6}>
             <Card body className="mt-4 mb-4">
               <div className="d-flex">
-                <strong>{selectedPost ? selectedPost.username : ""}</strong>
+              <img
+                  src={myData.image}
+                  alt="profile"
+                  height={50}
+                  style={{ borderRadius: "50%"}}
+                />
+                <div>
+                <strong className="ml-3 d-block">{selectedPost ? selectedPost.username : ""}</strong>
+                <span className="text-muted mt-n3 ml-3">
+                {selectedPost
+                  ? format(new Date(selectedPost.createdAt), "dd LLL, yyyy")
+                  : ""}
+              </span>
+              </div>
                 <span className="ml-auto">
                   <Dropdown>
                     <Dropdown.Toggle variant="transparent">
@@ -69,15 +84,12 @@ const SelectFeed = (props) => {
                     </Dropdown.Menu>
                   </Dropdown>
                 </span>
+                
               </div>
-              <span className="text-muted mt-n2">
-                {selectedPost
-                  ? format(new Date(selectedPost.createdAt), "dd LLL, yyyy")
-                  : ""}
-              </span>
+             
               <hr />
               <div>{selectedPost ? selectedPost.text : ""}</div>
-              {selectedPost ? (
+              {selectedPost.image ? (
                 <img
                   src={selectedPost.image}
                   alt="post"
