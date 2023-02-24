@@ -53,20 +53,8 @@ function Messaging() {
               <p>Reply to <strong>{post.username}....<HiReply/></strong></p>
 
               
-              <p>
-                {post.image ? (
-                  <img
-                    src={post.image}
-                    alt="post"
-                    height={20}
-                    style={{ width: "100%", marginTop: "10px" }}
-                  />
-                ) : (
-                  ""
-                )}
-              </p>
-
-              <hr />
+      
+          
               
               {/* <span className="mr-5">
                 <SlLike className="mr-2" /> Like
