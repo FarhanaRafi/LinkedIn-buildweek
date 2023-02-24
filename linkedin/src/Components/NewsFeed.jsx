@@ -19,7 +19,6 @@ import { HiOutlinePhotograph, HiOutlineLightBulb } from "react-icons/hi";
 import { MdVideocam, MdOutlineArticle } from "react-icons/md";
 import { FaHandsWash } from "react-icons/fa";
 import { format } from "date-fns";
-import { SlLike } from "react-icons/sl";
 import { FaRegCommentDots } from "react-icons/fa";
 import { BiRepost } from "react-icons/bi";
 import { RiSendPlaneFill } from "react-icons/ri";
