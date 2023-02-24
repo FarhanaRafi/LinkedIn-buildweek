@@ -133,6 +133,23 @@ const NavBar = () => {
           </a>
         </div>
       </div>
+      <div className="nav-bar-second-line-container">
+        <div className="nav-bar-second-line d-flex justify-content-between align-items-center">
+          <div className="profile-info-left d-flex align-items-center">
+            <img src="https://picsum.photos/200" alt="profile" />
+            <p>
+              <strong> Eleni Kellermann</strong>
+              <br />
+              Student at EPICODE
+            </p>
+          </div>
+          <div className="buttons-nav-bar-right">
+            <button className="one-button">More</button>
+            <button className="two-button">Add profile section</button>
+            <button className="three-button">Open to</button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
