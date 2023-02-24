@@ -3,20 +3,15 @@
 
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 2;
   background-color: white;
-}
-
-.nav-bar-second-line-container {
-  width: 100%;
-  border-top: 1px solid rgba(128, 128, 128, 0.222);
-  box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.218);
 }
 
 .nav-bar-container {
   display: flex;
   max-width: 70rem;
   margin-inline: auto;
+  z-index: 2;
 }
 
 .in-icon.linkedin-icon {
@@ -182,4 +177,19 @@
   color: white;
   background-color: rgb(10, 102, 194);
   margin-right: 10px;
+}
+
+.nav-bar-second-line-container {
+  width: 100%;
+  border-top: 1px solid rgba(128, 128, 128, 0.222);
+  box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.218);
+  position: absolute;
+  top: -80px;
+  background-color: white;
+  transition-duration: 1.5s;
+  z-index: 1;
+}
+
+.nav-bar-second-line-container.active {
+  top: 60px;
 }

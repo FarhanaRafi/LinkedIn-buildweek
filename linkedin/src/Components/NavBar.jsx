@@ -15,6 +15,17 @@ import { Link } from "react-router-dom";
 const NavBar = () => {
   const [searchWord, setSearchWord] = useState("");
   const profilesList = useSelector((state) => state.profiles.profiles);
+  const [navbar, setNavbar] = useState(false);
+
+  const changeNavbar = () => {
+    if (window.scrollY >= 500) {
+      setNavbar(true);
+    } else {
+      setNavbar(false);
+    }
+  };
+
+  window.addEventListener("scroll", changeNavbar);
 
   return (
     <div className="nav-bar-container-container">
@@ -133,7 +144,13 @@ const NavBar = () => {
           </a>
         </div>
       </div>
-      <div className="nav-bar-second-line-container">
+      <div
+        className={
+          navbar
+            ? "nav-bar-second-line-container active"
+            : "nav-bar-second-line-container"
+        }
+      >
         <div className="nav-bar-second-line d-flex justify-content-between align-items-center">
           <div className="profile-info-left d-flex align-items-center">
             <img src="https://picsum.photos/200" alt="profile" />
