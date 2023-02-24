@@ -8,6 +8,7 @@ import Footer from "./Components/Footer";
 import ExperiencePage from "./Components/ExperiencePage";
 import MainFeed from "./Components/MainFeed";
 import SelectFeed from "./Components/SelectFeed";
+import Messaging from "./Components/Messaging";
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
         <Route path="/feed" element={<MainFeed />} />
         <Route path="/feed/:id" element={<SelectFeed />} />
       </Routes>
-
+      <Messaging />
       <Footer />
     </BrowserRouter>
   );
