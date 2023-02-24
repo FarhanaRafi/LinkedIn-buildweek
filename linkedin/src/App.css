@@ -74,10 +74,10 @@
 }
 .sticky-side{
   position: sticky;
-  top:100px
+  top:150px
 }
 
 .sticky-side1{
   position: sticky;
-  top: 80px;
+  top: 150px;
 }

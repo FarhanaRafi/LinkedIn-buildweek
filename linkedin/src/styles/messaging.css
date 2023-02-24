@@ -1,7 +1,9 @@
 .messaging-container{
   margin-left: auto;
   height: 5em;
-  width: 15%
+
+  width: 25%
+
 }
 .messagingBase{
   line-height: 2em;
@@ -10,4 +12,9 @@
 .messaging-content{
   height: 20vh;
   margin-bottom:20vh
+}
+
+.popover-height{
+  height: 80vh;
+  width: 50vh
 }
