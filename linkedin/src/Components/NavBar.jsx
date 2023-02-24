@@ -16,6 +16,7 @@ const NavBar = () => {
   const [searchWord, setSearchWord] = useState("");
   const profilesList = useSelector((state) => state.profiles.profiles);
   const [navbar, setNavbar] = useState(false);
+  const myData = useSelector((state) => state.profile.data);
 
   const changeNavbar = () => {
     if (window.scrollY >= 500) {
@@ -91,7 +92,7 @@ const NavBar = () => {
           <Dropdown>
             <Dropdown.Toggle id="dropdown-basic" className="links">
               <img
-                src="https://picsum.photos/200"
+                src={myData.image}
                 alt="profile"
                 className="profile-picture"
               />
@@ -101,12 +102,12 @@ const NavBar = () => {
             <Dropdown.Menu alignRight>
               <div className="dropdown-top">
                 <img
-                  src="https://picsum.photos/200"
+                  src={myData.image}
                   alt="profile"
                   className="dropdown-profile-picture"
                 />
                 <p>
-                  <span>Eleni Kellermann</span> <br />
+                  <span>{myData.username}</span> <br />
                   Student at EPICODE
                 </p>
               </div>
@@ -153,9 +154,9 @@ const NavBar = () => {
       >
         <div className="nav-bar-second-line d-flex justify-content-between align-items-center">
           <div className="profile-info-left d-flex align-items-center">
-            <img src="https://picsum.photos/200" alt="profile" />
+            <img src={myData.image} alt="profile" />
             <p>
-              <strong> Eleni Kellermann</strong>
+              <strong>{myData.username}</strong>
               <br />
               Student at EPICODE
             </p>
