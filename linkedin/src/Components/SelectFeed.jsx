@@ -11,7 +11,7 @@ import { AiFillDelete } from "react-icons/ai";
 import UpdateFeed from "./UpdateFeed";
 import { useState } from "react";
 import { format } from "date-fns";
-import "../styles/selectfeed.css"
+import "../styles/selectfeed.css";
 
 const SelectFeed = (props) => {
   let selectedPost = useSelector((state) => state.selectedPost.selected);
@@ -39,20 +39,22 @@ const SelectFeed = (props) => {
           <Col xs={12} md={6}>
             <Card body className="mt-4 mb-4">
               <div className="d-flex">
-              <img
+                <img
                   src={myData.image}
                   alt="profile"
                   height={50}
-                  style={{ borderRadius: "50%"}}
+                  style={{ borderRadius: "50%" }}
                 />
                 <div>
-                <strong className="ml-3 d-block">{selectedPost ? selectedPost.username : ""}</strong>
-                <span className="text-muted mt-n3 ml-3">
-                {selectedPost
-                  ? format(new Date(selectedPost.createdAt), "dd LLL, yyyy")
-                  : ""}
-              </span>
-              </div>
+                  <strong className="ml-3 d-block">
+                    {selectedPost ? selectedPost.username : ""}
+                  </strong>
+                  <span className="text-muted mt-n3 ml-3">
+                    {selectedPost
+                      ? format(new Date(selectedPost.createdAt), "dd LLL, yyyy")
+                      : ""}
+                  </span>
+                </div>
                 <span className="ml-auto">
                   <Dropdown>
                     <Dropdown.Toggle variant="transparent">
@@ -84,9 +86,8 @@ const SelectFeed = (props) => {
                     </Dropdown.Menu>
                   </Dropdown>
                 </span>
-                
               </div>
-             
+
               <hr />
               <div>{selectedPost ? selectedPost.text : ""}</div>
               {selectedPost.image ? (
