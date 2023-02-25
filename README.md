@@ -16,8 +16,12 @@ Technologies used :
 - APIs
 - Async Fetch
 
+
 Profile Page:
 ![Profile Page](profile-page.png)
 
-Night
+
+
+
+Feed Page
 ![Feed Page](feed-page.png)
