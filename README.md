@@ -16,6 +16,7 @@ Technologies used :
 - APIs
 - Async Fetch
 
+Backend Service : https://github.com/FarhanaRafi/linkedIn-BE 
 
 Profile Page:
 ![Profile Page](profile-page.png)
